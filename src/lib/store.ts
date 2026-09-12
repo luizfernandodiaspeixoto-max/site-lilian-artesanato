@@ -11,8 +11,20 @@ const DATA_DIR = path.join(process.cwd(), 'data')
 
 let blobStore: any = null
 
+function findNetlifyApiToken(): string | undefined {
+  const direct = process.env.NETLIFY_API_PAT
+  if (direct) return direct
+  for (const key of Object.keys(process.env)) {
+    if (key.startsWith('NETLIFY_API') || key.includes('API_PAT') || key.includes('API_PA')) {
+      const value = process.env[key]
+      if (typeof value === 'string' && value.startsWith('nfp_')) return value
+    }
+  }
+  return undefined
+}
+
 function getBlobStore() {
-  const apiToken = process.env.NETLIFY_API_PAT
+  const apiToken = findNetlifyApiToken()
   const siteID = process.env.NETLIFY_SITE_ID || 'cf597f3c-1d0c-4e4c-a07c-750711d6d7dd'
   if (apiToken) {
     blobStore = getStore('lilian-artesanato-data', { siteID, token: apiToken })
@@ -55,8 +67,7 @@ export function getStoreDiagnostic() {
     const store = getBlobStore()
     return {
       isNetlify: IS_NETLIFY,
-      apiMode: !!process.env.NETLIFY_API_PAT,
-      hasSiteID: !!process.env.NETLIFY_SITE_ID,
+      apiMode: !!findNetlifyApiToken(),
       storeName: store?.name,
     }
   } catch (err: any) {
