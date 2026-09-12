@@ -1,0 +1,24 @@
+[
+  {
+    "id": "LIL-A3B7X2K9",
+    "customer": "Maria Silva",
+    "date": "2026-08-20T10:30:00.000Z",
+    "tracking": "BR123456789BR",
+    "total": 189,
+    "status": "Em Produção"
+  },
+  {
+    "id": "LIL-C9D4Y1M3",
+    "customer": "Ana Beatriz Costa",
+    "date": "2026-08-19T14:15:00.000Z",
+    "total": 328,
+    "status": "Novo"
+  },
+  {
+    "id": "LIL-F2H8Z5P7",
+    "customer": "Juliana Ferreira",
+    "date": "2026-08-18T09:00:00.000Z",
+    "total": 215,
+    "status": "Novo"
+  }
+]

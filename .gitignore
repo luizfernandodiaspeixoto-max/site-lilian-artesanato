@@ -1,0 +1,18 @@
+node_modules/
+.next/
+.vscode/
+.openclaude/
+.openopencode/
+*.log
+dev.log
+dev-err.log
+tsconfig.tsbuildinfo
+deploy.ps1
+Documentacao-Lilian-Artesanato.docx
+generate-doc.js
+historico-sessao-anterior.json
+Ultimo acesso.txt
+.netlify/
+.env*
+.DS_Store
+Thumbs.db

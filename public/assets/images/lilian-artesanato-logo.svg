@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <!-- Clip path for the yarn ball to keep threads neatly inside -->
+    <clipPath id="ball-clip">
+      <circle cx="32" cy="32" r="14" />
+    </clipPath>
+
+    <!-- Single flower petal -->
+    <path id="petal" d="M 0 0 Q 1.5 -3 0 -4 Q -1.5 -3 0 0" fill="none" stroke="#D4956A" stroke-width="1" stroke-linejoin="round" />
+    
+    <!-- Small accent leaf for the flowers -->
+    <path id="leaf" d="M 0 0 C 1 -1.5 1 -3 0 -4 C -1 -3 -1 -1.5 0 0" fill="#C17A4A" />
+
+    <!-- Complete 5-petal flower with leaves -->
+    <g id="flower">
+      <use href="#petal" />
+      <use href="#petal" transform="rotate(72)" />
+      <use href="#petal" transform="rotate(144)" />
+      <use href="#petal" transform="rotate(216)" />
+      <use href="#petal" transform="rotate(288)" />
+      <use href="#leaf" transform="rotate(36)" />
+      <use href="#leaf" transform="rotate(324)" />
+      <circle cx="0" cy="0" r="0.75" fill="#D4956A" />
+    </g>
+
+    <!-- Tiny 4-point star for artisan detailing -->
+    <path id="star" d="M 0 -2 L 0.5 -0.5 L 2 0 L 0.5 0.5 L 0 2 L -0.5 0.5 L -2 0 L -0.5 -0.5 Z" fill="#D4956A" />
+  </defs>
+
+  <!-- Background -->
+  <rect width="64" height="64" fill="#FDF8F2" />
+
+  <!-- Subtle artisan stitch ring in the background -->
+  <circle cx="32" cy="32" r="27" fill="none" stroke="#D4956A" stroke-width="0.5" stroke-dasharray="2 3" opacity="0.5" />
+
+  <!-- Corner Floral Motifs (rotated outwards for radial symmetry) -->
+  <use href="#flower" x="13" y="13" transform="translate(13, 13) rotate(-45) translate(-13, -13)" />
+  <use href="#flower" x="51" y="13" transform="translate(51, 13) rotate(45) translate(-51, -13)" />
+  <use href="#flower" x="13" y="51" transform="translate(13, 51) rotate(-135) translate(-13, -51)" />
+  <use href="#flower" x="51" y="51" transform="translate(51, 51) rotate(135) translate(-51, -51)" />
+
+  <!-- Delicate Stars at cardinal points -->
+  <use href="#star" x="32" y="5" />
+  <use href="#star" x="32" y="59" />
+  <use href="#star" x="5" y="32" />
+  <use href="#star" x="59" y="32" />
+
+  <!-- Yarn Ball Base Fill -->
+  <circle cx="32" cy="32" r="14" fill="#FDF8F2" />
+
+  <!-- Back Yarn Lines (Horizontal-ish) -->
+  <g clip-path="url(#ball-clip)" fill="none" stroke="#C17A4A" stroke-width="1" stroke-linecap="round">
+    <path d="M 15 21 Q 32 15 49 21" />
+    <path d="M 15 27 Q 32 21 49 27" />
+    <path d="M 15 37 Q 32 31 49 37" />
+    <path d="M 15 43 Q 32 37 49 43" />
+  </g>
+
+  <!-- Crochet Hook (Diagonal, weaving through the center) -->
+  <g transform="translate(32, 32) rotate(-45)">
+    <!-- Main Hook Outline (Handle, Shaft, Throat, and Tip) -->
+    <path d="M -25 -2 L -10 -2 C -9 -2 -8 -1.5 -8 -0.5 L 15 -0.5 C 16 -0.5 16.5 -1 16.5 -1.5 L 18 -1.5 A 1.5 1.5 0 0 1 18 1.5 L -8 1.5 C -8 1.5 -9 2 -10 2 L -25 2 A 2 2 0 0 1 -25 -2 Z" fill="#FDF8F2" stroke="#C17A4A" stroke-width="1.25" stroke-linejoin="round" />
+    <!-- Handle Grip Detail -->
+    <line x1="-22" y1="0" x2="-12" y2="0" stroke="#C17A4A" stroke-width="0.75" stroke-linecap="round" />
+  </g>
+
+  <!-- Front Yarn Lines (Vertical-ish, weaving OVER the hook) -->
+  <g clip-path="url(#ball-clip)" fill="none" stroke-linecap="round">
+    <!-- Knockout strokes to create the over/under weaving illusion -->
+    <g stroke="#FDF8F2" stroke-width="5">
+      <path d="M 21 15 Q 15 32 21 49" />
+      <path d="M 27 15 Q 21 32 27 49" />
+      <path d="M 37 15 Q 31 32 37 49" />
+      <path d="M 43 15 Q 37 32 43 49" />
+    </g>
+    <!-- Actual front yarn strokes -->
+    <g stroke="#C17A4A" stroke-width="1">
+      <path d="M 21 15 Q 15 32 21 49" />
+      <path d="M 27 15 Q 21 32 27 49" />
+      <path d="M 37 15 Q 31 32 37 49" />
+      <path d="M 43 15 Q 37 32 43 49" />
+    </g>
+  </g>
+
+  <!-- Yarn Ball Outline (Drawn last for a crisp, unbroken edge) -->
+  <circle cx="32" cy="32" r="14" fill="none" stroke="#C17A4A" stroke-width="1.5" />
+</svg>
