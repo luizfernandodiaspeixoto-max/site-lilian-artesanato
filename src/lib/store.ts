@@ -53,7 +53,7 @@ async function writeJSONArrayLocal(file: string, value: any[]): Promise<void> {
 export async function readNewsletter(): Promise<any[]> {
   if (IS_NETLIFY) {
     try {
-      const result = await getBlobStore().getJSON('newsletter')
+      const result = await getBlobStore().get('newsletter', { type: 'json' })
       return Array.isArray(result) ? result : []
     } catch {
       return []
@@ -67,7 +67,7 @@ export async function getStoreDiagnostic() {
     const store = getBlobStore()
     let readProbe = 'skip'
     try {
-      const probe = await (store as any).getJSON('newsletter')
+      const probe = await (store as any).get('newsletter', { type: 'json' })
       readProbe = Array.isArray(probe) ? `ok:${probe.length}` : 'empty'
     } catch (err: any) {
       readProbe = 'ERR: ' + String(err?.message || err)
@@ -94,7 +94,7 @@ export async function writeNewsletter(list: any[]): Promise<void> {
 export async function readOrders(): Promise<any[]> {
   if (IS_NETLIFY) {
     try {
-      const result = await getBlobStore().getJSON('orders')
+      const result = await getBlobStore().get('orders', { type: 'json' })
       return Array.isArray(result) ? result : []
     } catch {
       return []
@@ -114,7 +114,7 @@ export async function writeOrders(list: any[]): Promise<void> {
 export async function readLogs(): Promise<any[]> {
   if (IS_NETLIFY) {
     try {
-      const result = await getBlobStore().getJSON('logs')
+      const result = await getBlobStore().get('logs', { type: 'json' })
       return Array.isArray(result) ? result : []
     } catch {
       return []
