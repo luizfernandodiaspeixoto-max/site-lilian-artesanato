@@ -1,30 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
-
-const DIR = path.join(process.cwd(), 'data', 'newsletter')
-const FILE = path.join(DIR, 'newsletter.json')
-
-function ensure() {
-  if (!fs.existsSync(DIR)) fs.mkdirSync(DIR, { recursive: true })
-}
-
-function read(): any[] {
-  ensure()
-  if (!fs.existsSync(FILE)) return []
-  try {
-    const data = JSON.parse(fs.readFileSync(FILE, 'utf8'))
-    return Array.isArray(data) ? data : []
-  } catch { return [] }
-}
-
-function write(list: any[]) {
-  ensure()
-  fs.writeFileSync(FILE, JSON.stringify(list, null, 2), 'utf8')
-}
+import { readNewsletter, writeNewsletter } from '@/lib/store'
 
 export async function GET() {
-  const list = read()
+  const list = await readNewsletter()
   const sorted = [...list].sort(
     (a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   )
@@ -53,7 +31,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const list = read()
+    const list = await readNewsletter()
     const exists = list.find(
       (s: any) => s.email.toLowerCase() === email.toLowerCase(),
     )
@@ -73,7 +51,7 @@ export async function POST(request: NextRequest) {
     }
 
     list.push(subscriber)
-    write(list)
+    await writeNewsletter(list)
 
     return NextResponse.json({ ok: true, subscriber })
   } catch {
@@ -87,14 +65,14 @@ export async function POST(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   try {
     const body = await request.json()
-    const list = read()
+    const list = await readNewsletter()
     const filtered = list.filter((s: any) => s.id !== body.id)
 
     if (filtered.length === list.length) {
       return NextResponse.json({ error: 'Cadastro não encontrado' }, { status: 404 })
     }
 
-    write(filtered)
+    await writeNewsletter(filtered)
     return NextResponse.json({ ok: true })
   } catch {
     return NextResponse.json({ error: 'Falha ao remover' }, { status: 500 })

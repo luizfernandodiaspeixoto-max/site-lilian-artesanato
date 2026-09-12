@@ -1,9 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
-
-const LOGS_DIR = path.join(process.cwd(), 'data', 'logs')
-const LOGS_FILE = path.join(LOGS_DIR, 'access.log')
+import { readLogs } from '@/lib/store'
 
 const EMPTY = {
   totalVisits: 0,
@@ -12,12 +8,6 @@ const EMPTY = {
   todayUnique: 0,
   weekVisits: [],
   byPage: [],
-}
-
-function ensureLogsDir() {
-  if (!fs.existsSync(LOGS_DIR)) {
-    fs.mkdirSync(LOGS_DIR, { recursive: true })
-  }
 }
 
 function spDay(date: Date): string {
@@ -41,21 +31,7 @@ function last7Days(): string[] {
 
 export async function GET(request: NextRequest) {
   try {
-    ensureLogsDir()
-
-    if (!fs.existsSync(LOGS_FILE)) {
-      return NextResponse.json(EMPTY)
-    }
-
-    const content = fs.readFileSync(LOGS_FILE, 'utf8')
-    const entries = content
-      .trim()
-      .split('\n')
-      .filter(Boolean)
-      .map((line) => {
-        try { return JSON.parse(line) } catch { return null }
-      })
-      .filter(Boolean)
+    const entries = await readLogs()
 
     const views = entries.filter((e: any) => e.action === 'page_view')
 
