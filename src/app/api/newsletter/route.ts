@@ -6,7 +6,7 @@ export async function GET() {
   const sorted = [...list].sort(
     (a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   )
-  return NextResponse.json({ total: sorted.length, subscribers: sorted, _diag: getStoreDiagnostic() })
+  return NextResponse.json({ total: sorted.length, subscribers: sorted, _diag: await getStoreDiagnostic() })
 }
 
 export async function POST(request: NextRequest) {
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     list.push(subscriber)
     await writeNewsletter(list)
 
-    return NextResponse.json({ ok: true, subscriber, _diag: getStoreDiagnostic() })
+    return NextResponse.json({ ok: true, subscriber, _diag: await getStoreDiagnostic() })
   } catch (err: any) {
     return NextResponse.json(
       { error: 'Falha ao cadastrar', detail: String(err?.message || err) },

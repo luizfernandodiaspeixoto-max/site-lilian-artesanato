@@ -62,13 +62,21 @@ export async function readNewsletter(): Promise<any[]> {
   return readJSONArrayLocal(path.join(DATA_DIR, 'newsletter', 'newsletter.json'))
 }
 
-export function getStoreDiagnostic() {
+export async function getStoreDiagnostic() {
   try {
     const store = getBlobStore()
+    let readProbe = 'skip'
+    try {
+      const probe = await (store as any).getJSON('newsletter')
+      readProbe = Array.isArray(probe) ? `ok:${probe.length}` : 'empty'
+    } catch (err: any) {
+      readProbe = 'ERR: ' + String(err?.message || err)
+    }
     return {
       isNetlify: IS_NETLIFY,
       apiMode: !!findNetlifyApiToken(),
       storeName: store?.name,
+      readProbe,
     }
   } catch (err: any) {
     return { isNetlify: IS_NETLIFY, storeName: 'ERROR: ' + String(err?.message || err) }
