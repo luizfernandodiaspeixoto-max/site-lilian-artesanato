@@ -2,7 +2,11 @@ import fs from 'fs'
 import path from 'path'
 import { getStore } from '@netlify/blobs'
 
-const IS_NETLIFY = process.env.NETLIFY === 'true'
+const IS_NETLIFY =
+  process.env.NETLIFY === 'true' ||
+  process.env.NETLIFY_PLATFORM === 'netlify' ||
+  !!process.env.DEPLOY_ID ||
+  !!process.env.AWS_LAMBDA_FUNCTION_NAME
 const DATA_DIR = path.join(process.cwd(), 'data')
 
 let blobStore: any = null
