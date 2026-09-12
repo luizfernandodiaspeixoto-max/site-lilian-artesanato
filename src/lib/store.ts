@@ -12,18 +12,16 @@ const DATA_DIR = path.join(process.cwd(), 'data')
 let blobStore: any = null
 
 function getBlobStore() {
-  if (!blobStore) {
-    const siteID = process.env.NETLIFY_SITE_ID
-    const token = process.env.NETLIFY_ACCESS_TOKEN
-    if (siteID && token) {
-      blobStore = getStore({
-        name: 'lilian-artesanato-data',
-        siteID,
-        token,
-      })
-    } else {
-      blobStore = getStore({ name: 'lilian-artesanato-data' })
-    }
+  const siteID = process.env.NETLIFY_SITE_ID
+  const token = process.env.NETLIFY_ACCESS_TOKEN
+  if (siteID && token) {
+    blobStore = getStore({
+      name: 'lilian-artesanato-data',
+      siteID,
+      token,
+    })
+  } else {
+    blobStore = getStore({ name: 'lilian-artesanato-data' })
   }
   return blobStore
 }
@@ -54,6 +52,20 @@ export async function readNewsletter(): Promise<any[]> {
     }
   }
   return readJSONArrayLocal(path.join(DATA_DIR, 'newsletter', 'newsletter.json'))
+}
+
+export function getStoreDiagnostic() {
+  try {
+    const store = getBlobStore()
+    return {
+      isNetlify: IS_NETLIFY,
+      hasSiteID: !!process.env.NETLIFY_SITE_ID,
+      hasToken: !!process.env.NETLIFY_ACCESS_TOKEN,
+      storeName: store?.name,
+    }
+  } catch (err: any) {
+    return { isNetlify: IS_NETLIFY, storeName: 'ERROR: ' + String(err?.message || err) }
+  }
 }
 
 export async function writeNewsletter(list: any[]): Promise<void> {

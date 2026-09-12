@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { readNewsletter, writeNewsletter } from '@/lib/store'
+import { readNewsletter, writeNewsletter, getStoreDiagnostic } from '@/lib/store'
 
 export async function GET() {
   const list = await readNewsletter()
   const sorted = [...list].sort(
     (a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   )
-  return NextResponse.json({ total: sorted.length, subscribers: sorted })
+  return NextResponse.json({ total: sorted.length, subscribers: sorted, _diag: getStoreDiagnostic() })
 }
 
 export async function POST(request: NextRequest) {
@@ -53,10 +53,10 @@ export async function POST(request: NextRequest) {
     list.push(subscriber)
     await writeNewsletter(list)
 
-    return NextResponse.json({ ok: true, subscriber })
-  } catch {
+    return NextResponse.json({ ok: true, subscriber, _diag: getStoreDiagnostic() })
+  } catch (err: any) {
     return NextResponse.json(
-      { error: 'Falha ao cadastrar' },
+      { error: 'Falha ao cadastrar', detail: String(err?.message || err) },
       { status: 500 },
     )
   }
