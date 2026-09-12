@@ -1,8 +1,10 @@
 # Lilian Artesanato - Site Oficial
 
-Site de vitrine/e-commerce para artesã de crochê **Lilian Bareli**. Vitrine com catálogo completo de produtos, filtros por categoria e cor, depoimentos de clientes e botão de WhatsApp para pedidos diretos.
+Site de vitrine/e-commerce para artesã de crochê **Lilian Bareli**. Vitrine com catálogo completo de produtos, filtros por categoria e cor, depoimentos de clientes, banner de notícias, cadastro de newsletter e botão de WhatsApp para pedidos diretos. Possui área administrativa (pedidos, visitas, logs e newsletter) com persistência de dados em Netlify Blobs.
 
-**URL:** [lilianartesanato.com.br](https://lilianartesanato.com.br)
+**URL:** [lilianartesanato.com.br](https://lilianartesanato.com.br)  
+**Netlify:** [lilianartesanato.netlify.app](https://lilianartesanato.netlify.app)  
+**Repositório:** [github.com/luizfernandodiaspeixoto-max/site-lilian-artesanato](https://github.com/luizfernandodiaspeixoto-max/site-lilian-artesanato)
 
 ---
 
@@ -23,30 +25,41 @@ Site de vitrine/e-commerce para artesã de crochê **Lilian Bareli**. Vitrine co
 site Lilian Artesanato/
 ├── public/
 │   └── assets/
-│       ├── lilian-artesanato-logo.svg     # Logo do site (pill header)
 │       └── images/                        # Imagens de produtos + app_logo.png
-│           └── avatars/                   # Avatares dos depoimentos
 ├── src/
 │   ├── app/
 │   │   ├── globals.css                    # Estilos globais + Tailwind
-│   │   ├── layout.tsx                     # Layout raiz (fonts, metadata)
+│   │   ├── layout.tsx                     # Layout raiz (fonts, metadata, Logger)
 │   │   ├── page.tsx                       # Página inicial (/)
 │   │   ├── products/
 │   │   │   └── page.tsx                   # Catálogo de produtos (/products)
+│   │   ├── api/                           # API routes (persistência)
+│   │   │   ├── newsletter/route.ts        # GET/POST/DELETE de inscritos
+│   │   │   ├── orders/route.ts            # GET/POST/PATCH de pedidos
+│   │   │   ├── log/route.ts               # POST/GET de eventos (telemetria)
+│   │   │   └── visitas/route.ts           # GET contador de visitas
 │   │   └── admin/
-│   │       ├── logs/
-│   │       │   └── page.tsx               # Dashboard de logs (/admin/logs)
-│   │       └── orders/
-│   │           └── page.tsx               # Gerenciador de pedidos (/admin/orders)
+│   │       ├── layout.tsx                 # AdminProvider + AdminNav + Header/Footer
+│   │       ├── page.tsx                   # Dashboard (/admin)
+│   │       ├── logs/page.tsx              # Logs de eventos (/admin/logs)
+│   │       ├── newsletter/page.tsx        # Inscritos na newsletter (/admin/newsletter)
+│   │       ├── orders/page.tsx            # Gerenciador de pedidos (/admin/orders)
+│   │       └── visitas/page.tsx           # Contador de visitas (/admin/visitas)
 │   ├── components/
-│   │   ├── Footer.tsx                     # Rodapé (encomenda, frete, pagamento)
+│   │   ├── AdminContext.tsx               # Provider do header administrativo
+│   │   ├── AdminNav.tsx                   # Navegação admin (Pedidos/Visitas/Logs/Newsletter)
+│   │   ├── Footer.tsx                     # Rodapé (encomenda, frete, pagamento, newsletter)
 │   │   ├── Header.tsx                     # Pill flutuante com navegação
 │   │   ├── Logger.tsx                     # Captura de eventos/telemetria
+│   │   ├── NewsBannerCarousel.tsx         # Carrossel de notícias (homepage)
 │   │   ├── ProductCard.tsx                # Card individual de produto
 │   │   └── TestimonialCard.tsx            # Card de depoimento
 │   └── lib/
+│       ├── newsBanners.ts                 # Banners de notícias (8 itens)
 │       ├── products.ts                    # Dados dos 26 produtos (nome, subtitle, description)
+│       ├── store.ts                       # Camada de armazenamento (fs + Netlify Blobs)
 │       └── testimonials.ts                # Dados dos 7 depoimentos
+├── netlify.toml                           # Config de build no Netlify
 ├── next.config.js
 ├── tailwind.config.ts                     # Design system (cores, fontes)
 ├── postcss.config.js
@@ -88,10 +101,11 @@ Acesse: **http://localhost:3000**
 Ordem das seções (idêntica ao site em produção):
 
 1. **Sobre** — História da Lilian, foto da artesã e 4 estatísticas (500+ clientes, 8 anos, 100% feito à mão, 4.9★)
-2. **Hero** — Badge "Feitas à mão com amor · Peças por Encomenda", H1 "Lilian Artesanato, única como você.", CTAs, imagem com card "Destaque da Semana" e pill de estatísticas (500+ / 4.9★)
-3. **Coleção em Destaque** — Grid bento com 6 produtos mais populares
-4. **Depoimentos** — 7 avaliações reais (1 destaque + 6 cards)
-5. **Nova Coleção** — Bloco com gradiente rosa, estatísticas (500+, R$139, 24h) e CTAs
+2. **Notícias** — Carrossel com 8 banners de novidades do mundo do crochê (Notícias da Moda / Novidades Lilian)
+3. **Hero** — Badge "Feitas à mão com amor · Peças por Encomenda", H1 "Lilian Artesanato, única como você.", CTAs, imagem com card "Destaque da Semana" e pill de estatísticas (500+ / 4.9★)
+4. **Coleção em Destaque** — Grid bento com 6 produtos mais populares
+5. **Depoimentos** — 7 avaliações reais (1 destaque + 6 cards)
+6. **Nova Coleção** — Bloco com gradiente rosa, estatísticas (500+, R$139, 24h) e CTAs
 
 ### `/products` — Catálogo Completo
 
@@ -101,11 +115,14 @@ Ordem das seções (idêntica ao site em produção):
 - **Filtros por cor:** Todas as cores, Natural, Colorido, Neutro
 - **Badges:** Mais Vendida, Promoção, Nova, Destaque, Exclusiva
 
-### `/admin/logs` e `/admin/orders`
+### `/admin` — Área Administrativa
 
-Área administrativa (link "Admin" no rodapé):
-- `/admin/logs` — Visualiza eventos capturados (page_view, link_click, etc.)
-- `/admin/orders` — Gestão de pedidos recebidos
+Área administrativa (link "Admin" no rodapé) com header próprio (breadcrumb, link "Loja" e botão "Sair") e navegação:
+
+- `/admin/newsletter` — Inscritos na newsletter (busca, status e exclusão)
+- `/admin/visitas` — Contador de visitas (total, visitantes únicos e detalhes por página)
+- `/admin/orders` — Pedidos recebidos (criação, busca e atualização de status/rastreio)
+- `/admin/logs` — Eventos capturados (page_view, link_click, form_submit, etc.)
 
 ---
 
@@ -191,18 +208,43 @@ Cada depoimento possui `avatar` (URL com fallback para iniciais), `initials`, `p
 
 ---
 
+## Persistência de Dados
+
+| Dado | Local (dev) | Produção |
+|---|---|---|
+| Newsletter | `data/newsletter/newsletter.json` | Netlify Blobs (`newsletter`) |
+| Pedidos | `data/orders/orders.json` | Netlify Blobs (`orders`) |
+| Logs | `data/logs/access.log` | Netlify Blobs (`logs`) |
+| Visitas | derivado dos logs | Netlify Blobs (`logs`) |
+
+Camada única em `src/lib/store.ts` que detecta o ambiente (`IS_NETLIFY`) e usa **file system para desenvolvimento** ou **Netlify Blobs para produção**.
+
+> **Importante:** em produção, o acesso ao store usa a **API pública do Netlify** via variável de ambiente `NETLIFY_API_PAT` (com fallback para credenciais de contexto). Não remova ou renomeie essa variável.
+
+---
+
 ## Deploy
 
-### Netlify (hospedagem atual)
+### Netlify (hospedagem atual) — via GitHub
+
+O site é implantado automaticamente a cada `git push` na branch `main` do repositório [site-lilian-artesanato](https://github.com/luizfernandodiaspeixoto-max/site-lilian-artesanato).
+
+Build configurado em `netlify.toml` usando o plugin `@netlify/plugin-nextjs` (comando: `npm run build`, publish dir: `.`).
 
 ```bash
-# Deploy com CLI
+# Deploy manual via CLI (alternativa)
 netlify deploy --prod
 
 # Requer variáveis de ambiente:
 # NETLIFY_AUTH_TOKEN
 # NETLIFY_SITE_ID
 ```
+
+### Variáveis de ambiente
+
+| Variável | Obrigatória | Descrição |
+|---|---|---|
+| `NETLIFY_API_PAT` | Sim (produção) | Personal Access Token com acesso ao Blob Store (persistência) |
 
 **Domínio:** lilianartesanato.com.br  
 **Plataforma:** Netlify  
