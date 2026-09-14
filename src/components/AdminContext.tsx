@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, useContext, useState, ReactNode } from 'react'
-import { usePathname } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 
 interface AdminCtx {
   setAction: (node: ReactNode | null) => void
@@ -22,9 +22,16 @@ const SECTION_LABELS: Record<string, string> = {
 
 export function AdminProvider({ children }: { children: ReactNode }) {
   const [action, setAction] = useState<ReactNode | null>(null)
+  const router = useRouter()
   const pathname = usePathname()
   const section = pathname.split('/admin/')[1]?.split('/')[0] || 'orders'
   const label = SECTION_LABELS[section] || 'Admin'
+
+  const handleLogout = async () => {
+    await fetch('/api/logout', { method: 'POST' })
+    router.push('/login')
+    router.refresh()
+  }
 
   return (
     <Ctx.Provider value={{ setAction }}>
@@ -38,8 +45,8 @@ export function AdminProvider({ children }: { children: ReactNode }) {
 
           <div className="flex items-center gap-3">
             {action && <div>{action}</div>}
-            <a
-              href="/"
+            <button
+              onClick={handleLogout}
               title="Sair da área administrativa"
               className="flex items-center gap-1.5 rounded-lg border border-brand-border px-3 py-1.5 text-xs font-medium text-brand-secondary transition-colors hover:border-brand-accent hover:text-brand-accent"
             >
@@ -47,7 +54,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
               </svg>
               Sair
-            </a>
+            </button>
           </div>
         </div>
       </header>

@@ -6,7 +6,7 @@ import Image from 'next/image';
 const WHATSAPP_URL = 'https://wa.me/5528999057982';
 
 const NAV_CLASS =
-  'text-sm text-muted-foreground transition-colors hover:text-foreground';
+  'text-sm text-black transition-colors hover:text-black/70';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
