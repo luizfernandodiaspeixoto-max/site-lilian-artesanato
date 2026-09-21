@@ -551,19 +551,6 @@ export const products: Product[] = [
     image: 'cordao-vermelho.png',
     color: 'Colorido',
   },
-  {
-    id: 41,
-    slug: 'conquista-e-reconhecimento',
-    name: 'Conquista e Reconhecimento',
-    subtitle: 'Lilian Artesanato',
-    description:
-      '🏆 Conquista e reconhecimento! A Lilian Artesanato orgulhosamente recebeu o Troféu Destaque em Crochê, um marco que celebra a dedicação, o amor e a excelência no artesanato handmade. Cada ponto feito à mão carrega tradição, fé e a certeza de que o trabalho artesanal transforma vidas. Esta conquista é de todos que acreditam no poder da arte feita com as próprias mãos. Obrigada por fazer parte dessa história!',
-    category: 'Acessório',
-    badge: 'Destaque',
-    ratingCount: 50,
-    image: 'destaque-fotos-estrelas.png',
-    color: 'Neutro',
-  },
 ];
 
 export const categories: ProductCategory[] = [
