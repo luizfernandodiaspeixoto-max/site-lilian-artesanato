@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import ImageZoom from '@/components/ImageZoom';
 import type { Product } from '@/lib/products';
 
 const WHATSAPP_NUMBER = '5528999057982';
@@ -31,6 +32,10 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.badge}
           </div>
         )}
+        <ImageZoom
+          imageSrc={`/assets/images/${product.image}`}
+          alt={`${product.name} — ${product.description}`}
+        />
       </div>
 
       <div className="p-4">

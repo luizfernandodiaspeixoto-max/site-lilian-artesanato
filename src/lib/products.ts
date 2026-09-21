@@ -369,6 +369,32 @@ export const products: Product[] = [
     image: 'Captura_de_tela_2026-08-20_162134-1787254199079.png',
     color: 'Natural',
   },
+  {
+    id: 27,
+    slug: 'bolsa-quadrada-marrom-verde-duas-alcas',
+    name: 'Bolsa Quadrada Marrom com Verde e Duas Alças',
+    subtitle: 'Marrom/Verde',
+    description:
+      '🍃 Equilíbrio perfeito entre natureza e sofisticação! Nova bolsa quadrada de crochê no tom marrom com centro verde vibrante — uma combinação inédita que transmite elegância e frescor. Com suas duas alças resistentes, é prática, confortável e perfeita para o dia a dia. Cada ponto feito à mão pela Lilian garante uma peça única, cheia de personalidade e pronta para acompanhar você em qualquer ocasião. Peça exclusiva da nova coleção — encomende a sua!',
+    category: 'Bolsa',
+    badge: 'Nova',
+    ratingCount: 3,
+    image: 'bolsa_nova_1.jpeg',
+    color: 'Colorido',
+  },
+  {
+    id: 28,
+    slug: 'bolsa-cinza-franjas-estilo-boho',
+    name: 'Bolsa Cinza com Franjas Boho e Alça Única',
+    subtitle: 'Cinza',
+    description:
+      '🕊️ Puro estilo boho em cada franja! Nova bolsa de crochê na cor cinza com franjas delicadas que percorrem ao longo da peça — um movimento artesanal que encanta e dá textura ao visual. A alça única torna o uso ainda mais versátil e charmoso, perfeita para looks despojados ou sofisticados. Feita à mão com fios de alta qualidade, é uma peça exclusiva que equilibra modernidade e tradição. Das mãos da Lilian direto para o seu estilo!',
+    category: 'Bolsa',
+    badge: 'Nova',
+    ratingCount: 2,
+    image: 'bolsa_nova_2.jpeg',
+    color: 'Neutro',
+  },
 ];
 
 export const categories: ProductCategory[] = [

@@ -237,7 +237,6 @@ export default function Footer() {
               São José do Calçado – ES
             </p>
             <p className="text-sm text-muted-foreground">© 2026 Lilian Artesanato</p>
-            <a href="/admin/orders" className="mt-1 text-xs text-muted-foreground/40 transition-colors hover:text-muted-foreground">Admin</a>
           </div>
         </div>
 

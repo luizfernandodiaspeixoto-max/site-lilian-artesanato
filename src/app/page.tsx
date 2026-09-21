@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import TestimonialCard from '@/components/TestimonialCard';
 import NewsBannerCarousel from '@/components/NewsBannerCarousel';
+import ImageZoom from '@/components/ImageZoom';
 
 const WHATSAPP_URL = 'https://wa.me/5528999057982';
 const featuredProducts = products.slice(0, 6);
@@ -250,6 +251,7 @@ export default function HomePage() {
                         sizes="(max-width: 768px) 100vw, 33vw"
                         className="product-card-img bg-gray-200 object-cover"
                       />
+                      <ImageZoom imageSrc={`/assets/images/${p.image}`} alt={p.name} />
                     </div>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
