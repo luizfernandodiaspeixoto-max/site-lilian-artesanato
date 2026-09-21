@@ -103,6 +103,76 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ──────── CONQUISTA E RECONHECIMENTO (1.5th) ──────── */}
+      <section className="relative overflow-hidden px-4 py-16 md:px-6 md:py-24">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 opacity-40" aria-hidden="true">
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at center, rgba(196,149,106,0.20) 0%, transparent 60%)' }} />
+        </div>
+        <div className="relative mx-auto max-w-6xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+              Troféu Destaque em Crochê
+            </p>
+            <h2 className="font-display text-section-title font-semibold text-foreground">
+              Conquista e{' '}
+              <span className="font-light italic text-accent">Reconhecimento</span>
+            </h2>
+          </div>
+
+          <div className="mt-14 grid items-center gap-12 lg:grid-cols-2">
+            <div className="relative">
+              <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-accent/10 blur-2xl" aria-hidden="true" />
+              <Image
+                src="/assets/images/destaque-fotos-estrelas.png"
+                alt="Lilian Artesanato — Conquista e Reconhecimento, troféu de destaque em crochê"
+                width={500}
+                height={600}
+                unoptimized
+                className="w-full rounded-3xl object-cover shadow-warm-md"
+              />
+              <div className="glass-card absolute -bottom-5 left-6 flex items-center gap-3 rounded-xl px-5 py-3">
+                <span className="text-xl" aria-hidden="true">🏆</span>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Destaque em Crochê</p>
+                  <p className="text-xs text-muted-foreground">Conquista & Reconhecimento</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+                <strong className="text-foreground">Conquista e reconhecimento!</strong>{' '}
+                A <strong className="text-foreground">Lilian Artesanato</strong> teve o
+                privilégio de receber o Troféu Destaque em Crochê — uma celebração da
+                dedicação, do amor e da excelência no artesanato feito à mão.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                Cada ponto, cada fio e cada peça criada carrega tradição, fé e a certeza
+                de que o trabalho artesanal tem o poder de transformar vidas. Este troféu
+                é a prova viva de que arte feita com as próprias mãos inspira e emociona.
+              </p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                Esta conquista é de todos que acreditam no trabalho da Lilian. Obrigada
+                por fazer parte dessa história!
+              </p>
+
+              <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+                {[
+                  { value: '🏆', label: 'Troféu Destaque' },
+                  { value: '♥', label: 'Arte com amor' },
+                  { value: '100%', label: 'Feito à mão' },
+                ].map((s) => (
+                  <div key={s.label} className="rounded-2xl border border-border bg-card p-5 text-center">
+                    <p className="font-display text-2xl">{s.value}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ──────── HERO (2nd) ──────── */}
       <section className="relative overflow-hidden px-6 py-16 md:py-24 min-h-screen flex flex-col items-center justify-center pt-28 pb-16">
         {/* Blobs */}
