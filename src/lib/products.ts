@@ -35,6 +35,58 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 1,
+    slug: 'bolsa-bege-forro-alcas-couro',
+    name: 'Bolsa Bege com Forro e Alças de Couro',
+    subtitle: 'Bege',
+    description:
+      'Prática, elegante e muito espaçosa! Bolsa de crochê na cor bege com forro, bolso interno e alças de couro — a combinação perfeita para o dia a dia.',
+    category: 'Bolsa',
+    badge: 'Nova',
+    ratingCount: 1,
+    image: 'bolsa-bege-forro-alcas-couro.jpeg',
+    color: 'Natural',
+  },
+  {
+    id: 2,
+    slug: 'bolsa-pratica-versatil-dia-a-dia',
+    name: 'Bolsa Prática e Versátil',
+    subtitle: 'Versátil',
+    description:
+      'Modelo prático e versátil! Ideal para o dia a dia — bolsa de crochê feita à mão com muito estilo.',
+    category: 'Bolsa',
+    badge: 'Nova',
+    ratingCount: 1,
+    image: 'bolsa-pratica-versatil-dia-a-dia.jpeg',
+    color: 'Natural',
+  },
+  {
+    id: 3,
+    slug: 'bolsa-lili-cinza-sofisticada-delicada',
+    name: 'Bolsa Lili Cinza',
+    subtitle: 'Cinza',
+    description:
+      'Sofisticada e delicada! Bolsa de crochê na cor cinza com acabamento artesanal — elegância em cada ponto.',
+    category: 'Bolsa',
+    badge: 'Nova',
+    ratingCount: 1,
+    image: 'bolsa-lili-cinza.sofisticada-e-delicada.jpeg',
+    color: 'Neutro',
+  },
+  {
+    id: 4,
+    slug: 'bolsa-lili-lilas-duas-alcas',
+    name: 'Bolsa Lili Lilás com Duas Alças',
+    subtitle: 'Lilás',
+    description:
+      'Delicadeza e charme! Bolsa de crochê na cor lilás com duas alças — perfeita para mulheres com estilo.',
+    category: 'Bolsa',
+    badge: 'Nova',
+    ratingCount: 1,
+    image: 'bolsa-lili-lilas-duas-alcas.jpeg',
+    color: 'Colorido',
+  },
+  {
+    id: 5,
     slug: 'bolsa-azul-royal-alca-madeira',
     name: 'Bolsa Azul Royal com Alça de Madeira',
     subtitle: 'Azul Royal',
@@ -47,7 +99,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 2,
+    id: 6,
     slug: 'kit-cestinhas-croche-trio-candy',
     name: 'Kit Cestinhas de Crochê Trio Candy',
     subtitle: 'Rosa/Tiffany/Cinza',
@@ -60,24 +112,24 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 3,
-    slug: 'bolsa-hobo-vinho-detalhes-couro',
-    name: 'Bolsa Hobo Vinho com Detalhes em Couro',
+    id: 7,
+    slug: 'bolsa-boho-vinho-detalhes-couro',
+    name: 'Bolsa Boho Vinho com Detalhes em Couro',
     subtitle: 'Vinho',
     description:
-      'Elegância que se carrega no ombro! Bolsa hobo em crochê vinho profundo com detalhes em couro que elevam o acabamento artesanal a outro nível — espaçosa, sofisticada e feita com amor para mulheres que têm estilo.',
+      'Elegância que se carrega no ombro! Bolsa boho em crochê vinho com detalhes em couro.',
     category: 'Hobo',
     ratingCount: 28,
     image: 'WhatsApp_Image_2026-08-14_at_18.28.40_-_Copia-1787234370036.jpeg',
     color: 'Colorido',
   },
   {
-    id: 4,
+    id: 8,
     slug: 'bolsa-bucket-verde-escuro-corrente-prata',
     name: 'Bolsa Bucket Verde Escuro com Corrente Prata',
     subtitle: 'Verde Escuro',
     description:
-      'Atitude e sofisticação em cada detalhe! Bolsa bucket em crochê verde escuro com corrente prata dourada e contas de madeira que adicionam um toque boho-chic irresistível — a peça que eleva qualquer look ao próximo nível.',
+      'Atitude e sofisticação em cada detalhe! Bolsa bucket em crochê verde escuro com corrente prata.',
     category: 'Bucket',
     badge: 'Destaque',
     ratingCount: 22,
@@ -85,12 +137,12 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 5,
-    slug: 'bolsa-azul-marinho-painel-palha',
-    name: 'Bolsa Azul Marinho com Painel de Palha',
+    id: 9,
+    slug: 'bolsa-azul-marinho-palha-italiana',
+    name: 'Bolsa Azul Marinho com Palha Italiana',
     subtitle: 'Azul Marinho',
     description:
-      'Mar e elegância em uma só peça! Bolsa em azul marinho profundo com painel de palha natural e alça de madeira — uma combinação única que mistura o rústico e o refinado para criar um acessório verdadeiramente especial.',
+      'Muita elegância em uma só peça!',
     category: 'Bolsa',
     badge: 'Nova',
     ratingCount: 18,
@@ -98,12 +150,12 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 6,
-    slug: 'bolsa-hobo-cinza-grafite-detalhes-couro',
-    name: 'Bolsa Hobo Cinza Grafite com Detalhes em Couro',
+    id: 10,
+    slug: 'bolsa-boho-cinza-grafite-detalhes-couro',
+    name: 'Bolsa Boho Cinza Grafite com Detalhes em Couro',
     subtitle: 'Cinza Grafite',
     description:
-      'Minimalismo poderoso! Bolsa hobo em crochê cinza grafite com acabamentos em couro que transmitem modernidade e requinte — versátil para o trabalho, passeio ou jantar especial, sempre com aquele toque artesanal único.',
+      'Minimalismo poderoso! Bolsa Boho em crochê cinza grafite com acabamentos em couro.',
     category: 'Hobo',
     badge: 'Exclusiva',
     ratingCount: 15,
@@ -111,7 +163,7 @@ export const products: Product[] = [
     color: 'Neutro',
   },
   {
-    id: 7,
+    id: 11,
     slug: 'bolsa-baguete-preta-alca-trancada',
     name: 'Bolsa Baguete Preta com Alça Trançada',
     subtitle: 'Preto',
@@ -123,7 +175,7 @@ export const products: Product[] = [
     color: 'Neutro',
   },
   {
-    id: 8,
+    id: 12,
     slug: 'bolsa-tote-areia-textura-relevo',
     name: 'Bolsa Tote Areia com Textura em Relevo',
     subtitle: 'Areia/Bege',
@@ -136,7 +188,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 9,
+    id: 13,
     slug: 'bolsa-redonda-azul-alca-caramelo-tassel',
     name: 'Bolsa Redonda Azul com Alça Caramelo e Tassel',
     subtitle: 'Azul/Caramelo',
@@ -149,7 +201,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 10,
+    id: 14,
     slug: 'destaque-editorial-elegante-atemporal',
     name: 'Destaque Editorial — Elegante e Atemporal',
     subtitle: 'Exclusiva',
@@ -162,7 +214,7 @@ export const products: Product[] = [
     color: 'Neutro',
   },
   {
-    id: 11,
+    id: 15,
     slug: 'bolsa-quadrada-granny-square-alca-bambu',
     name: 'Bolsa Quadrada Granny Square com Alça de Bambu',
     subtitle: 'Multicolorida',
@@ -175,7 +227,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 12,
+    id: 16,
     slug: 'chinelo-customizado-flores-croche',
     name: 'Chinelo Customizado com Flores de Crochê',
     subtitle: 'Colorido',
@@ -188,7 +240,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 13,
+    id: 17,
     slug: 'bolsa-tote-geometrica-pingentes-madeira',
     name: 'Bolsa Tote Geométrica com Pingentes de Madeira',
     subtitle: 'Multicolorida',
@@ -201,7 +253,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 14,
+    id: 18,
     slug: 'conjunto-colar-multicamadas-perolas-brincos-grafite',
     name: 'Conjunto Colar Multicamadas com Pérolas & Brincos Grafite',
     subtitle: 'Dourado/Bronze/Branco',
@@ -214,7 +266,7 @@ export const products: Product[] = [
     color: 'Neutro',
   },
   {
-    id: 15,
+    id: 19,
     slug: 'conjunto-vinho-uva-colar-agata-brincos-flor-pulseiras',
     name: 'Conjunto Vinho/Uva — Colar com Ágata, Brincos Flor & Pulseiras',
     subtitle: 'Vinho/Uva',
@@ -227,7 +279,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 16,
+    id: 20,
     slug: 'vestido-longo-croche-off-white-rendado-boho',
     name: 'Vestido Longo de Crochê Off-White Rendado Boho',
     subtitle: 'Off-White',
@@ -240,7 +292,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 17,
+    id: 21,
     slug: 'bolsa-clutch-rose-gold-alca-bambu-corrente-dourada',
     name: 'Bolsa Clutch Rose Gold com Alça de Bambu e Corrente Dourada',
     subtitle: 'Rose Gold',
@@ -253,7 +305,7 @@ export const products: Product[] = [
     color: 'Neutro',
   },
   {
-    id: 18,
+    id: 22,
     slug: 'bolsa-tiracolo-caramelo-cobre-alca-madeira-corrente-dourada',
     name: 'Bolsa Tiracolo Caramelo/Cobre com Alça de Madeira e Corrente Dourada',
     subtitle: 'Caramelo/Cobre',
@@ -266,7 +318,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 19,
+    id: 23,
     slug: 'chapeu-praia-croche-caramelo',
     name: 'Chapéu de Praia de Crochê Caramelo',
     subtitle: 'Caramelo',
@@ -279,7 +331,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 20,
+    id: 24,
     slug: 'vestido-longo-granny-square-multicolorido',
     name: 'Vestido Longo Granny Square Multicolorido',
     subtitle: 'Multicolorido',
@@ -292,7 +344,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 21,
+    id: 25,
     slug: 'bolsa-quadrada-granny-square-laranja-alca-madeira',
     name: 'Bolsa Quadrada Granny Square Laranja com Alça de Madeira',
     subtitle: 'Laranja/Multicolorido',
@@ -305,12 +357,12 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 22,
-    slug: 'bolsa-tote-verde-militar-estrela-off-white-alca-madeira',
-    name: 'Bolsa Tote Verde Militar com Estrela Off-White e Alça de Madeira',
+    id: 26,
+    slug: 'bolsa-tote-verde-militar-folha-off-white-alca-madeira',
+    name: 'Bolsa Tote Verde Militar com Folha Off-White e Alça de Madeira',
     subtitle: 'Verde Militar',
     description:
-      'Estilo, atitude e artesanato em uma bolsa incrível! Tote de crochê em verde militar com estrela off-white bordada à mão no centro — uma combinação moderna e cheia de personalidade. A alça de madeira natural eleva o acabamento artesanal e garante resistência para o dia a dia. Espaçosa e versátil, é a bolsa perfeita para quem quer se destacar com originalidade.',
+      'Estilo e atitude! Uma bolsa prática e versátil!',
     category: 'Tote',
     badge: 'Nova',
     ratingCount: 14,
@@ -318,7 +370,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 23,
+    id: 27,
     slug: 'vestido-longo-granny-square-multicolorido-vestindo',
     name: 'Vestido Longo Granny Square Multicolorido — Foto Vestindo',
     subtitle: 'Multicolorido',
@@ -331,7 +383,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 24,
+    id: 28,
     slug: 'vestido-midi-listrado-tons-terrosos-alca-unica',
     name: 'Vestido Midi Listrado Tons Terrosos com Alça Única',
     subtitle: 'Tons Terrosos',
@@ -344,7 +396,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 25,
+    id: 29,
     slug: 'bolsa-meia-lua-branca-corrente-dourada-perolas',
     name: 'Bolsa Meia-Lua Branca com Corrente Dourada e Pérolas',
     subtitle: 'Branco/Dourado',
@@ -357,7 +409,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 26,
+    id: 30,
     slug: 'bolsa-tote-rose-nude-flores-croche-alcas-duplas',
     name: 'Bolsa Tote Rose/Nude com Flores em Crochê e Alças Duplas',
     subtitle: 'Rose/Nude',
@@ -370,7 +422,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 27,
+    id: 31,
     slug: 'bolsa-quadrada-marrom-verde-duas-alcas',
     name: 'Bolsa Quadrada Marrom com Verde e Duas Alças',
     subtitle: 'Marrom/Verde',
@@ -383,12 +435,12 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 28,
-    slug: 'bolsa-cinza-franjas-estilo-boho',
-    name: 'Bolsa Cinza com Franjas Boho e Alça Única',
-    subtitle: 'Cinza',
+    id: 32,
+    slug: 'bolsa-marrom-franjas-alca-tiracolo',
+    name: 'Bolsa Marrom com Franjas e Alça Tiracolo',
+    subtitle: 'Marrom',
     description:
-      '🕊️ Puro estilo boho em cada franja! Nova bolsa de crochê na cor cinza com franjas delicadas que percorrem ao longo da peça — um movimento artesanal que encanta e dá textura ao visual. A alça única torna o uso ainda mais versátil e charmoso, perfeita para looks despojados ou sofisticados. Feita à mão com fios de alta qualidade, é uma peça exclusiva que equilibra modernidade e tradição. Das mãos da Lilian direto para o seu estilo!',
+      'Puro estilo! Bolsa de crochê na cor marrom com franjas.',
     category: 'Bolsa',
     badge: 'Nova',
     ratingCount: 2,
@@ -396,7 +448,7 @@ export const products: Product[] = [
     color: 'Neutro',
   },
   {
-    id: 29,
+    id: 33,
     slug: 'brinco-cinza-conjunto',
     name: 'Brinco Cinza Conjunto',
     subtitle: 'Cinza',
@@ -409,7 +461,7 @@ export const products: Product[] = [
     color: 'Neutro',
   },
   {
-    id: 30,
+    id: 34,
     slug: 'brinco-cinza',
     name: 'Brinco Cinza',
     subtitle: 'Cinza',
@@ -422,7 +474,7 @@ export const products: Product[] = [
     color: 'Neutro',
   },
   {
-    id: 31,
+    id: 35,
     slug: 'brinco-cor-de-abobora',
     name: 'Brinco Cor de Abóbora',
     subtitle: 'Abóbora',
@@ -435,7 +487,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 32,
+    id: 36,
     slug: 'brinco-estrela',
     name: 'Brinco Estrela',
     subtitle: 'Estrela',
@@ -448,7 +500,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 33,
+    id: 37,
     slug: 'brinco-vermelho',
     name: 'Brinco Vermelho',
     subtitle: 'Vermelho',
@@ -461,7 +513,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 34,
+    id: 38,
     slug: 'cordao-azul',
     name: 'Cordão Azul',
     subtitle: 'Azul',
@@ -474,7 +526,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 35,
+    id: 39,
     slug: 'cordao-maron',
     name: 'Cordão Marrom',
     subtitle: 'Marrom',
@@ -487,7 +539,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 36,
+    id: 40,
     slug: 'cordao-pedra-azul',
     name: 'Cordão Pedra Azul',
     subtitle: 'Pedra Azul',
@@ -500,7 +552,7 @@ export const products: Product[] = [
     color: 'Colorido',
   },
   {
-    id: 37,
+    id: 41,
     slug: 'cordao-pedra-maron',
     name: 'Cordão Pedra Marrom',
     subtitle: 'Pedra Marrom',
@@ -513,7 +565,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 38,
+    id: 42,
     slug: 'cordao-pedra-maron-claro',
     name: 'Cordão Pedra Marrom Claro',
     subtitle: 'Pedra Marrom Claro',
@@ -526,7 +578,7 @@ export const products: Product[] = [
     color: 'Natural',
   },
   {
-    id: 39,
+    id: 43,
     slug: 'cordao-preto',
     name: 'Cordão Preto',
     subtitle: 'Preto',
@@ -539,7 +591,7 @@ export const products: Product[] = [
     color: 'Neutro',
   },
   {
-    id: 40,
+    id: 44,
     slug: 'cordao-vermelho',
     name: 'Cordão Vermelho',
     subtitle: 'Vermelho',
