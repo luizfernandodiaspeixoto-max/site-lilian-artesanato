@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /api
+Disallow: /carrinho
+Disallow: /checkout
+Disallow: /*?
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+Sitemap: https://lilianartesanato.com.br/sitemap.xml

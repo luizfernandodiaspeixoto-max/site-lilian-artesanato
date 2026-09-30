@@ -5,6 +5,7 @@ import { products } from '@/lib/products';
 import { testimonials } from '@/lib/testimonials';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SocialLinks from '@/components/SocialLinks';
 import TestimonialCard from '@/components/TestimonialCard';
 import NewsBannerCarousel from '@/components/NewsBannerCarousel';
 import ImageZoom from '@/components/ImageZoom';
@@ -425,6 +426,13 @@ export default function HomePage() {
                 <p className="text-sm text-white/70">
                   <strong className="text-white">Feito por Encomenda</strong> · 50% de depósito para confirmar o pedido
                 </p>
+              </div>
+
+              <div className="mt-10 flex flex-col items-center gap-3">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/50">
+                  Acompanhe a Lilian Artesanato
+                </p>
+                <SocialLinks iconClassName="border-white/10 bg-white/5 text-white/70 hover:border-accent/60 hover:bg-white/10 hover:text-accent" />
               </div>
 
               <div className="mx-auto mt-12 flex max-w-lg flex-wrap items-center justify-center gap-8 border-t border-white/10 pt-8">

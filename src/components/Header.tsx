@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import SocialLinks from '@/components/SocialLinks';
 
 const WHATSAPP_URL = 'https://wa.me/5528999057982';
 
@@ -97,6 +98,12 @@ export default function Header() {
           >
             Fazer Pedido
           </a>
+          <div className="mt-1 flex flex-col items-center gap-2 px-4 py-3">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+              Acompanhe no Instagram
+            </p>
+            <SocialLinks />
+          </div>
         </nav>
       )}
     </header>
