@@ -228,7 +228,6 @@ export default function Footer() {
           <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-muted-foreground">
             <a href="/" className="transition-colors hover:text-foreground">Início</a>
             <a href="/products" className="transition-colors hover:text-foreground">Catálogo</a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-green-600 transition-colors hover:text-green-700">WhatsApp</a>
             <a href="/admin" className="transition-colors hover:text-foreground">Admin</a>
           </nav>
           <div className="flex flex-col items-center gap-3 md:items-end">
