@@ -2,6 +2,11 @@ import Link from 'next/link'
 
 const SECTIONS = [
   {
+    href: '/admin/whatsapp',
+    label: 'WhatsApp (Evolution / Z-API)',
+    description: 'Conecte o celular via QR Code, configure o webhook e atendimento automático',
+  },
+  {
     href: '/admin/orders',
     label: 'Pedidos',
     description: 'Crie e gerencie pedidos recebidos, status e rastreio',

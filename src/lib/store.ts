@@ -50,6 +50,36 @@ async function writeJSONArrayLocal(file: string, value: any[]): Promise<void> {
   fs.writeFileSync(file, JSON.stringify(value, null, 2), 'utf8')
 }
 
+export async function readWhatsAppSettings(): Promise<any> {
+  const fallback = { enabled: true }
+  if (IS_NETLIFY) {
+    try {
+      const result = await getBlobStore().get('whatsapp_settings', { type: 'json' })
+      return result || fallback
+    } catch {
+      return fallback
+    }
+  }
+  const file = path.join(DATA_DIR, 'whatsapp', 'settings.json')
+  if (!fs.existsSync(file)) return fallback
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf8'))
+  } catch {
+    return fallback
+  }
+}
+
+export async function writeWhatsAppSettings(settings: any): Promise<void> {
+  if (IS_NETLIFY) {
+    await getBlobStore().setJSON('whatsapp_settings', settings)
+    return
+  }
+  const file = path.join(DATA_DIR, 'whatsapp', 'settings.json')
+  const dir = path.dirname(file)
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
+  fs.writeFileSync(file, JSON.stringify(settings, null, 2), 'utf8')
+}
+
 export async function readNewsletter(): Promise<any[]> {
   if (IS_NETLIFY) {
     try {

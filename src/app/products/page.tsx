@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
@@ -22,11 +22,48 @@ const COLOR_DOT: Record<ProductColor, string> = {
   Neutro: '#8D7B72',
 };
 
+function normalizeParam(value: string | null): string {
+  if (!value) return '';
+  try {
+    return decodeURIComponent(value).trim();
+  } catch {
+    return value.trim();
+  }
+}
+
+function readFiltersFromUrl(): {
+  categoria: CategoryFilter;
+  cor: ColorFilter;
+} {
+  if (typeof window === 'undefined') {
+    return { categoria: 'Todos', cor: 'Todos' };
+  }
+  const params = new URLSearchParams(window.location.search);
+  const categoriaParam = normalizeParam(params.get('categoria'));
+  const corParam = normalizeParam(params.get('cor'));
+
+  const categoria = categories.find((c) => c === categoriaParam);
+  const cor = colors.find((c) => c === corParam);
+
+  return {
+    categoria: categoria ?? 'Todos',
+    cor: cor ?? 'Todos',
+  };
+}
+
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] =
     useState<CategoryFilter>('Todos');
   const [activeColor, setActiveColor] = useState<ColorFilter>('Todos');
   const [sort, setSort] = useState<SortOption>('recent');
+  const [filtersReady, setFiltersReady] = useState(false);
+
+  useEffect(() => {
+    const { categoria, cor } = readFiltersFromUrl();
+    setActiveCategory(categoria);
+    setActiveColor(cor);
+    setFiltersReady(true);
+  }, []);
 
   const filteredProducts = useMemo(() => {
     let list = products.filter(
@@ -60,7 +97,9 @@ export default function ProductsPage() {
               <span className="font-display italic text-accent">Coleção</span>
             </h1>
             <p className="mt-2 text-sm text-muted-foreground">
-              {filteredProducts.length} peças encontradas
+              {filtersReady
+                ? `${filteredProducts.length} peças encontradas`
+                : 'Carregando peças...'}
             </p>
           </div>
 
