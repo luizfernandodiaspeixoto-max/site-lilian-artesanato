@@ -681,3 +681,21 @@ body {
     animation: neonPulse 1.5s infinite alternate;
   }
 }
+
+/* Ajuste de escala para padrão 100% */
+body { font-size: 14px !important; }
+.card { max-width: 320px !important; margin: 0 auto; }
+.card-media { height: 160px !important; }
+.news-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; gap: 16px !important; }
+
+/* Altura exata de 4cm para cada reportagem/card */
+.card { height: 4cm !important; max-height: 4cm !important; display: flex !important; flex-direction: column !important; overflow: hidden !important; padding: 10px !important; }
+.card-body { padding: 4px !important; flex: 1 !important; overflow: hidden !important; }
+.card-title { font-size: 13px !important; line-height: 1.2 !important; margin-bottom: 4px !important; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-media { display: none !important; }
+
+.card { height: 4cm !important; max-height: 4cm !important; display: flex !important; flex-direction: row !important; overflow: hidden !important; padding: 6px !important; margin-bottom: 8px !important; }
+.card-media { width: 4cm !important; height: calc(4cm - 12px) !important; min-width: 4cm !important; object-fit: cover !important; display: block !important; }
+.card-body { padding: 0 8px !important; flex: 1 !important; overflow: hidden !important; }
+.card-title { font-size: 12px !important; line-height: 1.15 !important; margin-bottom: 2px !important; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-desc { font-size: 10px !important; line-height: 1.1 !important; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
