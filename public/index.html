@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícias de São José do Calçado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+
+
+
+
+
+<style>
+/* Notícias de São José do Calçado - Estilo Jornal */
+:root {
+  --bg: #f7f5f1;
+  --paper: #ffffff;
+  --ink: #1a1a1a;
+  --ink-light: #4a4a4a;
+  --rule: #d7d2c9;
+  --accent: #8b1c13;
+  --accent-2: #111111;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: radial-gradient(circle at top, #fbf9f6, var(--bg));
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.masthead {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-bottom: 3px solid var(--accent-2);
+  background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(247,245,241,0.98) 100%);
+  backdrop-filter: blur(4px);
+}
+
+.masthead-top {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 26px 24px 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-mark {
+  width: 58px;
+  height: 55px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  letter-spacing: 6px;
+  text-indent: 6px;
+  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+  color: var(--accent);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand-title {
+  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+  font-weight: 900;
+  font-size: clamp(18px, 4vw, 34px);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.brand-subtitle {
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  font-size: 11px;
+  color: var(--ink-light);
+}
+
+.masthead-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 10px;
+  color: var(--ink-light);
+  text-align: right;
+}
+
+.brand-logo {
+  height: 55px;
+  width: auto;
+  max-width: 140px;
+  display: block;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+}
+
+.nav-bar {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  border-top: 1px solid var(--rule);
+  padding: 12px 24px;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  font-size: 10px;
+}
+
+.nav-bar a {
+  color: var(--ink-light);
+  text-decoration: none;
+  transition: color 160ms ease-in-out;
+  cursor: pointer;
+}
+
+.nav-bar a:hover {
+  color: var(--accent);
+}
+
+.nav-bar a.active {
+  color: var(--accent);
+  position: relative;
+}
+
+.nav-bar a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 36px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 18px;
+}
+
+.section-head h1 {
+  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+  font-weight: 900;
+  font-size: clamp(26px, 6vw, 48px);
+  letter-spacing: 10px;
+  text-transform: uppercase;
+}
+
+.section-head-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 10px;
+  color: var(--ink-light);
+}
+
+.year-filter {
+  border: 1px solid var(--rule);
+  background: transparent;
+  padding: 8px 14px;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 9px;
+}
+
+.btn {
+  border: 1px solid var(--ink);
+  background: transparent;
+  padding: 9px 18px;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 9px;
+  cursor: pointer;
+  transition: all 160ms ease-in-out;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 28px;
+}
+
+.card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 26px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: 0 40px 60px -60px rgba(26, 26, 26, 0.9);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+  text-align: left;
+  font: inherit;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 60px 80px -70px rgba(139, 28, 19, 0.4);
+}
+
+.card-horizontal {
+  align-items: stretch;
+}
+
+.card-button {
+  width: 100%;
+  cursor: pointer;
+}
+
+.card-media {
+  grid-column: 1 / span 5;
+  min-height: 220px;
+  max-height: 260px;
+  overflow: hidden;
+  background: #111;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.card-content {
+  grid-column: 6 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(22px, 6vw, 42px) clamp(22px, 6vw, 48px) clamp(22px, 6vw, 42px) 0;
+}
+
+.card-kicker {
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-size: 9px;
+  color: var(--accent);
+}
+
+.card-title {
+  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+  font-weight: 900;
+  font-size: clamp(22px, 4vw, 36px);
+  line-height: 1.18;
+}
+
+.card-deck {
+  max-width: 880px;
+  font-size: clamp(16px, 2vw, 18px);
+  color: var(--ink-light);
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 9px;
+  color: var(--ink-light);
+}
+
+.card-cta {
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  font-size: 9px;
+  color: var(--accent);
+}
+
+.empty {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 40px 20px;
+  border: 1px dashed var(--rule);
+}
+
+.empty h2 {
+  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+
+.empty p {
+  color: var(--ink-light);
+}
+
+.footer {
+  border-top: 1px solid var(--rule);
+  background: rgba(255,255,255,0.9);
+}
+
+.footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 9px;
+  color: var(--ink-light);
+}
+
+@media (max-width: 920px) {
+  .card-media {
+    grid-column: 1 / -1;
+    min-height: 200px;
+    max-height: 220px;
+  }
+  .card-content {
+    grid-column: 1 / -1;
+    padding: clamp(20px, 6vw, 32px);
+  }
+}
+
+.opinion {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: clamp(22px, 5vw, 42px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.opinion-head h2 {
+  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+  font-weight: 900;
+  font-size: clamp(24px, 5vw, 38px);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+.opinion-head p {
+  margin-top: 8px;
+  color: var(--ink-light);
+}
+
+.opinion-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 9px;
+  color: var(--ink-light);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--rule);
+  background: #fdfcfa;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  border-radius: 0;
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
+}
+
+.opinion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.opinion-status {
+  font-size: 13px;
+  color: var(--ink-light);
+}
+
+.opinion-status.success {
+  color: #1c6b3a;
+}
+
+.opinion-status.error {
+  color: var(--accent);
+}
+
+.visits {
+  white-space: nowrap;
+}
+
+.visits-top {
+  letter-spacing: 4px;
+}
+
+.comment-ticker {
+  border: 1px solid var(--rule);
+  background: linear-gradient(90deg, rgba(139,28,19,0.08) 0%, rgba(255,255,255,0.9) 100%);
+  overflow: hidden;
+  position: relative;
+  padding: 10px 0;
+}
+
+.comment-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  animation: ticker 40s linear infinite;
+}
+
+.comment-ticker:hover .comment-track {
+  animation-play-state: paused;
+}
+
+.comment-item {
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 9px;
+  color: var(--ink);
+}
+
+.comment-item strong {
+  color: var(--accent);
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 720px) {
+  .brand-title {
+    letter-spacing: 6px;
+  }
+  .brand-subtitle {
+    letter-spacing: 8px;
+  }
+  .nav-bar {
+    letter-spacing: 6px;
+  }
+  .section-head h1 {
+    letter-spacing: 8px;
+  }
+  .masthead-meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .brand-logo {
+    height: 55px;
+    max-width: 110px;
+  }
+  .opinion-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--rule);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: rgba(0,0,0,0.7); align-items: center; justify-content: center; }
+.modal.open { display: flex; }
+.modal-panel { background: #fff; width: 90%; max-width: 1000px; height: 85vh; display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: #111; color: #fff; }
+.modal-close { background: #111111; color: #fff; border: none; padding: 6px 12px; cursor: pointer; font-weight: bold; border-radius: 4px; }
+.modal-body { flex: 1; width: 100%; }
+.modal-body iframe { width: 100%; height: 100%; border: none; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes neonPulse {
+  0% { box-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 20px #ff007f; border-color: #ff007f; }
+  50% { box-shadow: 0 0 2px #ff007f, 0 0 5px #ff007f; border-color: #fff; }
+  100% { box-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 20px #ff007f; border-color: #ff007f; }
+}
+.floating-neon-ad {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 99999;
+  background: #111111;
+  color: #ffffff;
+  padding: 14px 24px;
+  border-radius: 30px;
+  font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  border: 2px solid #ff007f;
+  animation: neonPulse 1.5s infinite alternate;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.7);
+}
+.floating-neon-ad:hover {
+  background: #ff007f;
+  color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+@keyframes neonPulse {
+  0% { box-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f; border-color: #ff007f; }
+  50% { box-shadow: 0 0 2px #ff007f, 0 0 5px #ff007f; border-color: #fff; }
+  100% { box-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f; border-color: #ff007f; }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: grid !important;
+    grid-template-columns: 260px 1fr !important;
+    grid-template-areas:
+      "masthead masthead"
+      "sidebar container"
+      "sidebar footer";
+  }
+  .masthead {
+    grid-area: masthead;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+  .sidebar-ad {
+    grid-area: sidebar;
+    background: #111111;
+    border-right: 2px solid #ff007f;
+    padding: 30px 16px;
+    min-height: calc(100vh - 120px);
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    z-index: 998;
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+    animation: neonPulse 1.5s infinite alternate;
+  }
+  .container {
+    grid-area: container;
+    margin-top: 120px;
+  }
+  .footer {
+    grid-area: footer;
+  }
+}
+
+@media (max-width: 1023px) {
+  .masthead {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+  .container {
+    margin-top: 120px;
+  }
+  .sidebar-ad {
+    background: #111111;
+    border: 2px solid #ff007f;
+    padding: 20px;
+    margin: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+    animation: neonPulse 1.5s infinite alternate;
+  }
+}
+
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="brand brand-with-logo">
+        <img class="brand-logo" src="https://pmsjc.es.gov.br/assets-portal/images/igreja-big.jpeg" alt="São José do Calçado">
+        <div class="brand-text">
+          <div class="brand-title">NOTÍCIAS DE SÃO JOSÉ DO CALÇADO</div>
+          <div class="brand-subtitle">Jornal Digital • Espírito Santo</div>
+        </div>
+      </div>
+      <div class="masthead-meta">
+        <div id="date-time">--</div>
+        <div class="visits visits-top">Visitas: <strong id="visits">--</strong></div>
+      </div>
+    </div>
+    <nav class="nav-bar">
+      <a href="#" data-cat="home" data-label="Home" class="active">Home</a>
+      <a href="#" data-cat="politica" data-label="Política">Política</a>
+      <a href="#" data-cat="comunidade" data-label="Comunidade">Comunidade</a>
+      <a href="#" data-cat="seguranca" data-label="Segurança">Segurança</a>
+      <a href="#" data-cat="esporte" data-label="Esporte">Esporte</a>
+      <a href="#" data-cat="opiniao" data-label="Comentários">Comentários</a>
+    </nav>
+  </header>
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<aside class="sidebar-ad">
+  <div style="font-family:'Merriweather',serif; font-size:14px; font-weight:900; color:#ff007f; text-transform:uppercase; letter-spacing:4px; text-align:center; border-bottom:1px solid #333; padding-bottom:12px;">Patrocínio / Anúncio</div>
+  <div style="background:#1a1a1a; border:1px solid #333; padding:16px; text-align:center; color:#fff; font-size:12px; line-height:1.5;">
+    <p style="margin-bottom:10px; color:#ff007f; font-weight:bold; text-transform:uppercase; letter-spacing:2px;">Espaço Publicitário</p>
+    <p style="color:#ccc; font-size:11px;">Anuncie aqui no Jornal Digital de São José do Calçado e região!</p>
+  </div>
+  <div style="margin-top:auto; text-align:center;">
+    <a href="https://wa.me/" target="_blank" style="display:block; background:#ff007f; color:#fff; padding:10px; font-size:10px; font-weight:bold; text-transform:uppercase; letter-spacing:2px; text-decoration:none; border-radius:4px; box-shadow:0 0 10px rgba(255,0,127,0.5);">Anuncie Conosco</a>
+  </div>
+</aside>
+
+<main class="container">
+    <section class="section-head" id="ultimas">
+      <h1>Últimas notícias</h1>
+      <div class="section-head-meta">
+        <span id="count">0 matérias</span>
+        <select id="year-filter" class="year-filter"></select>
+        <button id="refresh" class="btn">Atualizar agora</button>
+      </div>
+    </section>
+
+    <section id="grid" class="grid"></section>
+    <section id="empty" class="empty" style="display:none;">
+      <h2>Nenhuma notícia nesta categoria / ano</h2>
+      <p>Escolha outra categoria ou outro ano no filtro.</p>
+    </section>
+
+    <section id="opiniao" class="opinion">
+      <div class="opinion-head">
+        <h2>Deixe o seu comentário</h2>
+        <p>Fale o que desejar. Seu comentário aparece na faixa rolando logo abaixo.</p>
+      </div>
+      <div class="comment-ticker">
+        <div class="comment-track" id="comment-track"></div>
+      </div>
+      <form id="opinion-form" class="opinion-form">
+        <div class="field">
+          <label for="opinion-name">Nome (opcional)</label>
+          <input type="text" id="opinion-name" name="name" maxlength="80" placeholder="Seu nome">
+        </div>
+        <div class="field">
+          <label for="opinion-contact">Contato (opcional)</label>
+          <input type="text" id="opinion-contact" name="contact" maxlength="120" placeholder="E-mail ou WhatsApp">
+        </div>
+        <div class="field field-full">
+          <label for="opinion-message">Seu comentário *</label>
+          <textarea id="opinion-message" name="message" rows="5" maxlength="2000" required placeholder="Escreva aqui o que quiser..."></textarea>
+        </div>
+        <div class="opinion-actions field-full">
+          <button type="submit" class="btn">Publicar comentário</button>
+          <span id="opinion-status" class="opinion-status" role="status"></span>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div id="news-modal" class="modal">
+    <div class="modal-backdrop" id="news-modal-close"></div>
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div class="modal-title" id="news-modal-title">Matéria</div>
+        <button type="button" class="modal-close" id="news-modal-x">FECHAR</button>
+      </div>
+      <div class="modal-body">
+        <iframe id="news-frame" src="about:blank" title="Matéria" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; padding:15px; font-weight:bold; color:#8b1c13; letter-spacing:2px; background:#fff; border-top:1px solid #d7d2c9;">noticiasdesaojosedocalcado</div>
+<footer class="footer">
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Notícias de São José do Calçado</div>
+    </div>
+  </footer>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+window.__EMBEDDED_NOTICIAS__ = [{"id":"76bqbk","title":"São José do Calçado (ES): veja lista de candidatos a vereador e números nas Eleições 2024 - UOL Notícias","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20veja%20lista%20de%20candidatos%20a%20vereador%20e%20n%C3%BAmeros%20nas%20Elei%C3%A7%C3%B5es%202024%20-%20UOL%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado (ES): veja lista de candidatos a vereador e números nas Eleições 2024 &nbsp;&nbsp; UOL Notícias","pubDate":"Thu, 03 Oct 2024 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T10:54:35.205Z","image":"","thumbnail":""},{"id":"1jo3igw","title":"Prefeito de São José do Calçado (ES) toma posse nesta quarta (1º); veja lista de vereadores eleitos - G1","link":"https://www.google.com/search?q=Prefeito%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20toma%20posse%20nesta%20quarta%20(1%C2%BA)%3B%20veja%20lista%20de%20vereadores%20eleitos%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Prefeito de São José do Calçado (ES) toma posse nesta quarta (1º); veja lista de vereadores eleitos &nbsp;&nbsp; G1","pubDate":"Tue, 31 Dec 2024 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T10:54:35.200Z","image":"","thumbnail":""},{"id":"dyjbwg","title":"BOCA, Vereador 2016 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=BOCA%2C%20Vereador%202016%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"BOCA, Vereador 2016 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Tue, 29 Sep 2026 10:37:44 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T09:55:41.022Z","image":"","thumbnail":""},{"id":"1hw44zk","title":"Resultados: Senador | São José do Calçado (ES) | Eleições 2018 - Especiais Gazeta do Povo","link":"https://www.google.com/search?q=Resultados%3A%20Senador%20%7C%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20%7C%20Elei%C3%A7%C3%B5es%202018%20-%20Especiais%20Gazeta%20do%20Povo%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Resultados: Senador | São José do Calçado (ES) | Eleições 2018 &nbsp;&nbsp; Especiais Gazeta do Povo","pubDate":"Fri, 19 Oct 2018 18:50:49 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.916Z","image":"","thumbnail":""},{"id":"rbxc8w","title":"Após temporal, São José do Calçado decreta situação de emergência - G1","link":"https://www.google.com/search?q=Ap%C3%B3s%20temporal%2C%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20decreta%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Após temporal, São José do Calçado decreta situação de emergência &nbsp;&nbsp; G1","pubDate":"Mon, 06 Jun 2016 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.916Z","image":"","thumbnail":""},{"id":"uouzsw","title":"Prefeitura de São José do Calçado-ES lança concurso público - Ache Concursos","link":"https://www.google.com/search?q=Prefeitura%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado-ES%20lan%C3%A7a%20concurso%20p%C3%BAblico%20-%20Ache%20Concursos%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Prefeitura de São José do Calçado-ES lança concurso público &nbsp;&nbsp; Ache Concursos","pubDate":"Thu, 02 Oct 2025 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.916Z","image":"","thumbnail":""},{"id":"4g5hck","title":"Resultado das Eleições e Apuração São José do Calçado-ES no 1º Turno | G1 Eleições - G1","link":"https://www.google.com/search?q=Resultado%20das%20Elei%C3%A7%C3%B5es%20e%20Apura%C3%A7%C3%A3o%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado-ES%20no%201%C2%BA%20Turno%20%7C%20G1%20Elei%C3%A7%C3%B5es%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Resultado das Eleições e Apuração São José do Calçado-ES no 1º Turno | G1 Eleições &nbsp;&nbsp; G1","pubDate":"Sun, 15 Nov 2020 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.914Z","image":"","thumbnail":""},{"id":"f4o18g","title":"Placa com erro de grafia chama atenção em São José do Calçado - A Gazeta","link":"https://www.google.com/search?q=Placa%20com%20erro%20de%20grafia%20chama%20aten%C3%A7%C3%A3o%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20A%20Gazeta%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Placa com erro de grafia chama atenção em São José do Calçado &nbsp;&nbsp; A Gazeta","pubDate":"Thu, 04 Nov 2021 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.914Z","image":"","thumbnail":""},{"id":"lu4zgg","title":"Trilhas, voo livre e cachoeiras em São José do Calçado - Tribuna Online","link":"https://www.google.com/search?q=Trilhas%2C%20voo%20livre%20e%20cachoeiras%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Tribuna%20Online%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Trilhas, voo livre e cachoeiras em São José do Calçado &nbsp;&nbsp; Tribuna Online","pubDate":"Sun, 08 Oct 2023 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.914Z","image":"","thumbnail":""},{"id":"1dyawa8","title":"Tornado? Nuvem-funil chama atenção em São Jose do Calçado; veja vídeo - A Gazeta","link":"https://www.google.com/search?q=Tornado%3F%20Nuvem-funil%20chama%20aten%C3%A7%C3%A3o%20em%20S%C3%A3o%20Jose%20do%20Cal%C3%A7ado%3B%20veja%20v%C3%ADdeo%20-%20A%20Gazeta%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Tornado? Nuvem-funil chama atenção em São Jose do Calçado; veja vídeo &nbsp;&nbsp; A Gazeta","pubDate":"Thu, 15 Dec 2022 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.914Z","image":"","thumbnail":""},{"id":"1hqn5s","title":"Previsão meteorológica de 3 dias em São José do Calçado, Espírito Santo, Brasil - AccuWeather","link":"https://www.google.com/search?q=Previs%C3%A3o%20meteorol%C3%B3gica%20de%203%20dias%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%2C%20Esp%C3%ADrito%20Santo%2C%20Brasil%20-%20AccuWeather%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Previsão meteorológica de 3 dias em São José do Calçado, Espírito Santo, Brasil &nbsp;&nbsp; AccuWeather","pubDate":"Sun, 05 Mar 2017 13:37:14 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.914Z","image":"","thumbnail":""},{"id":"1xf8gb4","title":"Quadrilha que trazia drogas do RJ para São José do Calçado, ES, é presa - G1","link":"https://www.google.com/search?q=Quadrilha%20que%20trazia%20drogas%20do%20RJ%20para%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%2C%20ES%2C%20%C3%A9%20presa%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Quadrilha que trazia drogas do RJ para São José do Calçado, ES, é presa &nbsp;&nbsp; G1","pubDate":"Wed, 30 Oct 2019 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.914Z","image":"","thumbnail":""},{"id":"8myc8g","title":"São José do Calçado e Bom Jesus do Norte, ES, ficam com ruas alagadas após forte chuva - G1","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20e%20Bom%20Jesus%20do%20Norte%2C%20ES%2C%20ficam%20com%20ruas%20alagadas%20ap%C3%B3s%20forte%20chuva%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado e Bom Jesus do Norte, ES, ficam com ruas alagadas após forte chuva &nbsp;&nbsp; G1","pubDate":"Fri, 24 Jan 2020 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.914Z","image":"","thumbnail":""},{"id":"1usj19s","title":"Resultados para Deputado Estadual no Espírito Santo em São José do Calçado (ES) - Especiais Gazeta do Povo","link":"https://www.google.com/search?q=Resultados%20para%20Deputado%20Estadual%20no%20Esp%C3%ADrito%20Santo%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20-%20Especiais%20Gazeta%20do%20Povo%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Resultados para Deputado Estadual no Espírito Santo em São José do Calçado (ES) &nbsp;&nbsp; Especiais Gazeta do Povo","pubDate":"Thu, 18 Oct 2018 21:00:43 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.913Z","image":"","thumbnail":""},{"id":"1uo4v40","title":"Marido mata esposa a facadas em São José do Calçado e foge para o Rio de Janeiro - A Gazeta","link":"https://www.google.com/search?q=Marido%20mata%20esposa%20a%20facadas%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20e%20foge%20para%20o%20Rio%20de%20Janeiro%20-%20A%20Gazeta%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Marido mata esposa a facadas em São José do Calçado e foge para o Rio de Janeiro &nbsp;&nbsp; A Gazeta","pubDate":"Wed, 06 Aug 2025 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.913Z","image":"","thumbnail":""},{"id":"1chjs1s","title":"Resultados da votação em São José do Calçado (ES) | Eleições 2018 - Especiais Gazeta do Povo","link":"https://www.google.com/search?q=Resultados%20da%20vota%C3%A7%C3%A3o%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20%7C%20Elei%C3%A7%C3%B5es%202018%20-%20Especiais%20Gazeta%20do%20Povo%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Resultados da votação em São José do Calçado (ES) | Eleições 2018 &nbsp;&nbsp; Especiais Gazeta do Povo","pubDate":"Thu, 18 Oct 2018 19:45:32 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.913Z","image":"","thumbnail":""},{"id":"15zlb28","title":"São José do Calçado, Espírito Santo - MSN","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%2C%20Esp%C3%ADrito%20Santo%20-%20MSN%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado, Espírito Santo &nbsp;&nbsp; MSN","pubDate":"Sun, 05 Jan 2025 02:16:03 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.913Z","image":"","thumbnail":""},{"id":"1uten1s","title":"São José do Calçado abre dois processos seletivos - Especiais Gazeta do Povo","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20abre%20dois%20processos%20seletivos%20-%20Especiais%20Gazeta%20do%20Povo%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado abre dois processos seletivos &nbsp;&nbsp; Especiais Gazeta do Povo","pubDate":"Fri, 17 Dec 2021 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.913Z","image":"","thumbnail":""},{"id":"1fpc7gg","title":"Apuração de votos e resultados: São José do Calçado (ES) | Eleições 2024 - Estadão","link":"https://www.google.com/search?q=Apura%C3%A7%C3%A3o%20de%20votos%20e%20resultados%3A%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20%7C%20Elei%C3%A7%C3%B5es%202024%20-%20Estad%C3%A3o%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Apuração de votos e resultados: São José do Calçado (ES) | Eleições 2024 &nbsp;&nbsp; Estadão","pubDate":"Mon, 07 Oct 2024 06:33:53 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.912Z","image":"","thumbnail":""},{"id":"yf8t4g","title":"Final de mandato: cautelar determina suspensão de oito licitações de São José do Calçado - TCEES","link":"https://www.google.com/search?q=Final%20de%20mandato%3A%20cautelar%20determina%20suspens%C3%A3o%20de%20oito%20licita%C3%A7%C3%B5es%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20TCEES%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Final de mandato: cautelar determina suspensão de oito licitações de São José do Calçado &nbsp;&nbsp; TCEES","pubDate":"Tue, 15 Dec 2020 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.912Z","image":"","thumbnail":""},{"id":"j2qzog","title":"Rio transborda e deixa São José do Calçado debaixo d'água; veja fotos - A Gazeta","link":"https://www.google.com/search?q=Rio%20transborda%20e%20deixa%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20debaixo%20d'%C3%A1gua%3B%20veja%20fotos%20-%20A%20Gazeta%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Rio transborda e deixa São José do Calçado debaixo d'água; veja fotos &nbsp;&nbsp; A Gazeta","pubDate":"Wed, 25 Jan 2023 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.912Z","image":"","thumbnail":""},{"id":"qkysa8","title":"Previsão do tempo São José Do Calçado ES. 14 dias - Meteored Brasil","link":"https://www.google.com/search?q=Previs%C3%A3o%20do%20tempo%20S%C3%A3o%20Jos%C3%A9%20Do%20Cal%C3%A7ado%20ES.%2014%20dias%20-%20Meteored%20Brasil%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Previsão do tempo São José Do Calçado ES. 14 dias &nbsp;&nbsp; Meteored Brasil","pubDate":"Thu, 08 Oct 2026 16:33:28 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-24T00:12:34.902Z","image":"","thumbnail":""},{"id":"1tirq80","title":"São José do Calçado (ES): Apuração e Resultados | Eleições 2024 | 1º turno - UOL Notícias","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20Apura%C3%A7%C3%A3o%20e%20Resultados%20%7C%20Elei%C3%A7%C3%B5es%202024%20%7C%201%C2%BA%20turno%20-%20UOL%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado (ES): Apuração e Resultados | Eleições 2024 | 1º turno &nbsp;&nbsp; UOL Notícias","pubDate":"Wed, 21 Aug 2024 17:21:45 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.363Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1yxavy8","title":"Homem é preso após agredir a mãe idosa e provocar vazamento de gás em São José do Calçado - Jornal Espírito Santo Notícias","link":"https://www.google.com/search?q=Homem%20%C3%A9%20preso%20ap%C3%B3s%20agredir%20a%20m%C3%A3e%20idosa%20e%20provocar%20vazamento%20de%20g%C3%A1s%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Jornal%20Esp%C3%ADrito%20Santo%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Homem é preso após agredir a mãe idosa e provocar vazamento de gás em São José do Calçado &nbsp;&nbsp; Jornal Espírito Santo Notícias","pubDate":"Tue, 04 Aug 2026 16:15:45 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.363Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"2nxpmo","title":"São José do Calçado (ES): veja lista dos vereadores eleitos nas Eleições 2024 - UOL Notícias","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20veja%20lista%20dos%20vereadores%20eleitos%20nas%20Elei%C3%A7%C3%B5es%202024%20-%20UOL%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado (ES): veja lista dos vereadores eleitos nas Eleições 2024 &nbsp;&nbsp; UOL Notícias","pubDate":"Sun, 06 Oct 2024 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.363Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1x6zud1","title":"Eleições em São José do Calçado (ES): Veja como foi a votação no 2º turno - G1","link":"https://www.google.com/search?q=Elei%C3%A7%C3%B5es%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20Veja%20como%20foi%20a%20vota%C3%A7%C3%A3o%20no%202%C2%BA%20turno%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Eleições em São José do Calçado (ES): Veja como foi a votação no 2º turno &nbsp;&nbsp; G1","pubDate":"Mon, 31 Oct 2022 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.363Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1ujr74w","title":"Prefeito de São José do Calçado chama vereadora e deputado de ‘mentirosos’ - Século Diário","link":"https://www.google.com/search?q=Prefeito%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20chama%20vereadora%20e%20deputado%20de%20%E2%80%98mentirosos%E2%80%99%20-%20S%C3%A9culo%20Di%C3%A1rio%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Prefeito de São José do Calçado chama vereadora e deputado de ‘mentirosos’ &nbsp;&nbsp; Século Diário","pubDate":"Fri, 05 Sep 2025 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.363Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1urdym8","title":"Eleições 2024 em São José do Calçado (ES): veja os candidatos a prefeito e a vereador - G1","link":"https://www.google.com/search?q=Elei%C3%A7%C3%B5es%202024%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20veja%20os%20candidatos%20a%20prefeito%20e%20a%20vereador%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Eleições 2024 em São José do Calçado (ES): veja os candidatos a prefeito e a vereador &nbsp;&nbsp; G1","pubDate":"Fri, 16 Aug 2024 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.363Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1x6zouw","title":"PM apreende drogas e materiais para preparo de entorpecentes em São José do Calçado - Aqui Notícias","link":"https://www.google.com/search?q=PM%20apreende%20drogas%20e%20materiais%20para%20preparo%20de%20entorpecentes%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Aqui%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"PM apreende drogas e materiais para preparo de entorpecentes em São José do Calçado &nbsp;&nbsp; Aqui Notícias","pubDate":"Sat, 19 Sep 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1xtwiv4","title":"Eleições 2024: Cuíca, do PSB, é eleito prefeito de São José do Calçado no 1º turno - G1","link":"https://www.google.com/search?q=Elei%C3%A7%C3%B5es%202024%3A%20Cu%C3%ADca%2C%20do%20PSB%2C%20%C3%A9%20eleito%20prefeito%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20no%201%C2%BA%20turno%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Eleições 2024: Cuíca, do PSB, é eleito prefeito de São José do Calçado no 1º turno &nbsp;&nbsp; G1","pubDate":"Mon, 07 Oct 2024 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1trvqf4","title":"Suspeito refez piso de quarto para esconder corpo de Monique em São José do Calçado - Aqui Notícias","link":"https://www.google.com/search?q=Suspeito%20refez%20piso%20de%20quarto%20para%20esconder%20corpo%20de%20Monique%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Aqui%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Suspeito refez piso de quarto para esconder corpo de Monique em São José do Calçado &nbsp;&nbsp; Aqui Notícias","pubDate":"Sat, 25 Jul 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"8tauo0","title":"Apuração das Eleições em São José do Calçado (ES) | Eleições 2024 - G1","link":"https://www.google.com/search?q=Apura%C3%A7%C3%A3o%20das%20Elei%C3%A7%C3%B5es%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20%7C%20Elei%C3%A7%C3%B5es%202024%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Apuração das Eleições em São José do Calçado (ES) | Eleições 2024 &nbsp;&nbsp; G1","pubDate":"Fri, 13 Sep 2024 19:07:18 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"nseies","title":"População de São José do Calçado (ES) é de 10.878 pessoas, aponta o Censo do IBGE - G1","link":"https://www.google.com/search?q=Popula%C3%A7%C3%A3o%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20%C3%A9%20de%2010.878%20pessoas%2C%20aponta%20o%20Censo%20do%20IBGE%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"População de São José do Calçado (ES) é de 10.878 pessoas, aponta o Censo do IBGE &nbsp;&nbsp; G1","pubDate":"Wed, 28 Jun 2023 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"6hvuo","title":"Promotoria de Justiça de São José do Calçado alcança 100% de tramitação digital - Ministério Público do Espírito Santo","link":"https://www.google.com/search?q=Promotoria%20de%20Justi%C3%A7a%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20alcan%C3%A7a%20100%25%20de%20tramita%C3%A7%C3%A3o%20digital%20-%20Minist%C3%A9rio%20P%C3%BAblico%20do%20Esp%C3%ADrito%20Santo%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Promotoria de Justiça de São José do Calçado alcança 100% de tramitação digital &nbsp;&nbsp; Ministério Público do Espírito Santo","pubDate":"Tue, 27 Oct 2020 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"6og60k","title":"Cuíca, do PSB, é reeleito prefeito de São José do Calçado (ES) - Estadão","link":"https://www.google.com/search?q=Cu%C3%ADca%2C%20do%20PSB%2C%20%C3%A9%20reeleito%20prefeito%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20-%20Estad%C3%A3o%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Cuíca, do PSB, é reeleito prefeito de São José do Calçado (ES) &nbsp;&nbsp; Estadão","pubDate":"Sun, 06 Oct 2024 22:27:34 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"ixg01s","title":"Ruínas da antiga usina atraem curiosos em São José do Calçado - ES Brasil","link":"https://www.google.com/search?q=Ru%C3%ADnas%20da%20antiga%20usina%20atraem%20curiosos%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20ES%20Brasil%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Ruínas da antiga usina atraem curiosos em São José do Calçado &nbsp;&nbsp; ES Brasil","pubDate":"Thu, 16 Oct 2025 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1vnkks0","title":"São José Do Calçado (ES): veja os candidatos a prefeito e a vereador e seus números - Estadão","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20Do%20Cal%C3%A7ado%20(ES)%3A%20veja%20os%20candidatos%20a%20prefeito%20e%20a%20vereador%20e%20seus%20n%C3%BAmeros%20-%20Estad%C3%A3o%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José Do Calçado (ES): veja os candidatos a prefeito e a vereador e seus números &nbsp;&nbsp; Estadão","pubDate":"Fri, 27 Sep 2024 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"9s82ps","title":"Em São José do Calçado, MST retoma luta pela terra em área do governo capixaba - mst.org.br","link":"https://www.google.com/search?q=Em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%2C%20MST%20retoma%20luta%20pela%20terra%20em%20%C3%A1rea%20do%20governo%20capixaba%20-%20mst.org.br%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Em São José do Calçado, MST retoma luta pela terra em área do governo capixaba &nbsp;&nbsp; mst.org.br","pubDate":"Tue, 13 Aug 2024 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"vg0vw4","title":"Homem morre eletrocutado ao tentar religar energia em São José do Calçado - A Gazeta","link":"https://www.google.com/search?q=Homem%20morre%20eletrocutado%20ao%20tentar%20religar%20energia%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20A%20Gazeta%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Homem morre eletrocutado ao tentar religar energia em São José do Calçado &nbsp;&nbsp; A Gazeta","pubDate":"Sun, 15 Feb 2026 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"ow294w","title":"Eleições em São José do Calçado (ES): Veja como foi a votação no 1º turno - G1","link":"https://www.google.com/search?q=Elei%C3%A7%C3%B5es%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20Veja%20como%20foi%20a%20vota%C3%A7%C3%A3o%20no%201%C2%BA%20turno%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Eleições em São José do Calçado (ES): Veja como foi a votação no 1º turno &nbsp;&nbsp; G1","pubDate":"Sun, 02 Oct 2022 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.362Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"17va3uo","title":"Em São José do Calçado, equipe do TCE-ES detalha regime previdenciário do município - TCEES","link":"https://www.google.com/search?q=Em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%2C%20equipe%20do%20TCE-ES%20detalha%20regime%20previdenci%C3%A1rio%20do%20munic%C3%ADpio%20-%20TCEES%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Em São José do Calçado, equipe do TCE-ES detalha regime previdenciário do município &nbsp;&nbsp; TCEES","pubDate":"Thu, 17 Aug 2023 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.361Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"10l03rs","title":"Temporal assusta moradores e destrói casas em São José do Calçado, veja o vídeo - Folha do ES","link":"https://www.google.com/search?q=Temporal%20assusta%20moradores%20e%20destr%C3%B3i%20casas%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%2C%20veja%20o%20v%C3%ADdeo%20-%20Folha%20do%20ES%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Temporal assusta moradores e destrói casas em São José do Calçado, veja o vídeo &nbsp;&nbsp; Folha do ES","pubDate":"Fri, 02 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.361Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"z8py4g","title":"São José do Calçado (ES): veja lista de vereadores eleitos na cidade - Estadão","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20veja%20lista%20de%20vereadores%20eleitos%20na%20cidade%20-%20Estad%C3%A3o%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado (ES): veja lista de vereadores eleitos na cidade &nbsp;&nbsp; Estadão","pubDate":"Mon, 14 Oct 2024 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.361Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"6wtbw8","title":"Sicredi chega com nova agência em São José do Calçado - Aqui Notícias","link":"https://www.google.com/search?q=Sicredi%20chega%20com%20nova%20ag%C3%AAncia%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Aqui%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Sicredi chega com nova agência em São José do Calçado &nbsp;&nbsp; Aqui Notícias","pubDate":"Tue, 26 May 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"15a6kn4","title":"BOCA, Vereador 2008 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=BOCA%2C%20Vereador%202008%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"BOCA, Vereador 2008 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Tue, 29 Sep 2026 09:34:17 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1ts5g8l","title":"Homem de 73 anos morre após ser baleado na cabeça em São José do Calçado - G1","link":"https://www.google.com/search?q=Homem%20de%2073%20anos%20morre%20ap%C3%B3s%20ser%20baleado%20na%20cabe%C3%A7a%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Homem de 73 anos morre após ser baleado na cabeça em São José do Calçado &nbsp;&nbsp; G1","pubDate":"Tue, 06 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1t84veo","title":"TCE recomenda rejeição das contas do prefeito de São José do Calçado - Aqui Notícias","link":"https://www.google.com/search?q=TCE%20recomenda%20rejei%C3%A7%C3%A3o%20das%20contas%20do%20prefeito%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Aqui%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"TCE recomenda rejeição das contas do prefeito de São José do Calçado &nbsp;&nbsp; Aqui Notícias","pubDate":"Tue, 18 Aug 2026 20:32:26 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1ukw14w","title":"Darlene Glória: de São José do Calçado ao reconhecimento no cinema brasileiro - Aqui Notícias","link":"https://www.google.com/search?q=Darlene%20Gl%C3%B3ria%3A%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20ao%20reconhecimento%20no%20cinema%20brasileiro%20-%20Aqui%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Darlene Glória: de São José do Calçado ao reconhecimento no cinema brasileiro &nbsp;&nbsp; Aqui Notícias","pubDate":"Thu, 15 Oct 2026 20:29:52 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"pek2m8","title":"Prefeito de São José do Calçado é internado às pressas após mal-estar - Aqui Notícias","link":"https://www.google.com/search?q=Prefeito%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20%C3%A9%20internado%20%C3%A0s%20pressas%20ap%C3%B3s%20mal-estar%20-%20Aqui%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Prefeito de São José do Calçado é internado às pressas após mal-estar &nbsp;&nbsp; Aqui Notícias","pubDate":"Tue, 20 Jan 2026 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"hu6erk","title":"Ida de vereadores a Brasília custa R$ 43 mil para Câmara de São José do Calçado - A Gazeta","link":"https://www.google.com/search?q=Ida%20de%20vereadores%20a%20Bras%C3%ADlia%20custa%20R%24%2043%20mil%20para%20C%C3%A2mara%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20A%20Gazeta%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Ida de vereadores a Brasília custa R$ 43 mil para Câmara de São José do Calçado &nbsp;&nbsp; A Gazeta","pubDate":"Mon, 10 Nov 2025 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1dvzj0g","title":"Biblioteca de São José do Calçado vira palco de peça teatral inspirada em histórias de autores locais - Jornal Espírito Santo Notícias","link":"https://www.google.com/search?q=Biblioteca%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20vira%20palco%20de%20pe%C3%A7a%20teatral%20inspirada%20em%20hist%C3%B3rias%20de%20autores%20locais%20-%20Jornal%20Esp%C3%ADrito%20Santo%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Biblioteca de São José do Calçado vira palco de peça teatral inspirada em histórias de autores locais &nbsp;&nbsp; Jornal Espírito Santo Notícias","pubDate":"Mon, 17 Aug 2026 20:05:57 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"19k2lkw","title":"Idoso é baleado na cabeça em São José do Calçado - diaadiaes.com.br","link":"https://www.google.com/search?q=Idoso%20%C3%A9%20baleado%20na%20cabe%C3%A7a%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20diaadiaes.com.br%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Idoso é baleado na cabeça em São José do Calçado &nbsp;&nbsp; diaadiaes.com.br","pubDate":"Tue, 06 Oct 2026 13:39:25 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1fzc51c","title":"Família procura por homem que desapareceu em São José do Calçado - A Gazeta","link":"https://www.google.com/search?q=Fam%C3%ADlia%20procura%20por%20homem%20que%20desapareceu%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20A%20Gazeta%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Família procura por homem que desapareceu em São José do Calçado &nbsp;&nbsp; A Gazeta","pubDate":"Tue, 06 Jan 2026 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1c4ow3k","title":"Idoso baleado na cabeça é socorrido em estado grave em São José do Calçado - Aqui Notícias","link":"https://www.google.com/search?q=Idoso%20baleado%20na%20cabe%C3%A7a%20%C3%A9%20socorrido%20em%20estado%20grave%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Aqui%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Idoso baleado na cabeça é socorrido em estado grave em São José do Calçado &nbsp;&nbsp; Aqui Notícias","pubDate":"Tue, 06 Oct 2026 11:34:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.360Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"7dk6e8","title":"TETÉ, Prefeito 2020 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=TET%C3%89%2C%20Prefeito%202020%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"TETÉ, Prefeito 2020 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Mon, 05 Oct 2026 09:00:23 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.359Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1pcj8qo","title":"Prefeitura de São José do Calçado ES abre processo seletivo com 524 vagas - Qconcursos Folha Dirigida","link":"https://www.google.com/search?q=Prefeitura%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20ES%20abre%20processo%20seletivo%20com%20524%20vagas%20-%20Qconcursos%20Folha%20Dirigida%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Prefeitura de São José do Calçado ES abre processo seletivo com 524 vagas &nbsp;&nbsp; Qconcursos Folha Dirigida","pubDate":"Fri, 19 Dec 2025 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.359Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1har9xc","title":"Governo do ES libera obras e recursos para São José do Calçado - Aqui Notícias","link":"https://www.google.com/search?q=Governo%20do%20ES%20libera%20obras%20e%20recursos%20para%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Aqui%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Governo do ES libera obras e recursos para São José do Calçado &nbsp;&nbsp; Aqui Notícias","pubDate":"Fri, 13 Mar 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.359Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"8kjrr4","title":"ZÉ MANOEL, Vereador 2004 em Sao Jose do Calcado - CBN Amazônia","link":"https://www.google.com/search?q=Z%C3%89%20MANOEL%2C%20Vereador%202004%20em%20Sao%20Jose%20do%20Calcado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"ZÉ MANOEL, Vereador 2004 em Sao Jose do Calcado &nbsp;&nbsp; CBN Amazônia","pubDate":"Sun, 11 Oct 2026 08:37:13 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.359Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"dfh48w","title":"TETÉ, Vereador 2024 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=TET%C3%89%2C%20Vereador%202024%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"TETÉ, Vereador 2024 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Mon, 05 Oct 2026 11:03:42 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.359Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"5wf6io","title":"Aposentado morre após ser baleado na cabeça em São José do Calçado - Tribuna Online","link":"https://www.google.com/search?q=Aposentado%20morre%20ap%C3%B3s%20ser%20baleado%20na%20cabe%C3%A7a%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Tribuna%20Online%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Aposentado morre após ser baleado na cabeça em São José do Calçado &nbsp;&nbsp; Tribuna Online","pubDate":"Tue, 06 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.359Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1m28b9c","title":"Eleições 2026 - Resultado em São José do Calçado - G1","link":"https://www.google.com/search?q=Elei%C3%A7%C3%B5es%202026%20-%20Resultado%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Eleições 2026 - Resultado em São José do Calçado &nbsp;&nbsp; G1","pubDate":"Mon, 05 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.359Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"fktiig","title":"Concurso São José do Calçado (ES) 2025: 74 vagas abertas em edital municipal - Qconcursos Folha Dirigida","link":"https://www.google.com/search?q=Concurso%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%202025%3A%2074%20vagas%20abertas%20em%20edital%20municipal%20-%20Qconcursos%20Folha%20Dirigida%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Concurso São José do Calçado (ES) 2025: 74 vagas abertas em edital municipal &nbsp;&nbsp; Qconcursos Folha Dirigida","pubDate":"Wed, 03 Dec 2025 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.359Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"3cevsw","title":"São José do Calçado: MPC-ES defende rejeição das contas da prefeitura - Aqui Notícias","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%3A%20MPC-ES%20defende%20rejei%C3%A7%C3%A3o%20das%20contas%20da%20prefeitura%20-%20Aqui%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado: MPC-ES defende rejeição das contas da prefeitura &nbsp;&nbsp; Aqui Notícias","pubDate":"Tue, 26 May 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.359Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"feij8w","title":"NEL DA TERRA DO SOL, Vereador 2012 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=NEL%20DA%20TERRA%20DO%20SOL%2C%20Vereador%202012%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"NEL DA TERRA DO SOL, Vereador 2012 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Fri, 16 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"lfly80","title":"MAURICIO DO HOSPITAL, Vereador 2020 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=MAURICIO%20DO%20HOSPITAL%2C%20Vereador%202020%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"MAURICIO DO HOSPITAL, Vereador 2020 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Sat, 17 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1ml1og","title":"Com falhas orçamentárias e financeiras, prestação de contas anual de 2024 de São José do Calçado recebem parecer pela rejeição no TCE-ES - TCEES","link":"https://www.google.com/search?q=Com%20falhas%20or%C3%A7ament%C3%A1rias%20e%20financeiras%2C%20presta%C3%A7%C3%A3o%20de%20contas%20anual%20de%202024%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20recebem%20parecer%20pela%20rejei%C3%A7%C3%A3o%20no%20TCE-ES%20-%20TCEES%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Com falhas orçamentárias e financeiras, prestação de contas anual de 2024 de São José do Calçado recebem parecer pela rejeição no TCE-ES &nbsp;&nbsp; TCEES","pubDate":"Mon, 17 Aug 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"a2a6kg","title":"Mulher de 33 anos desaparece em São José do Calçado, no Sul do ES - A Gazeta","link":"https://www.google.com/search?q=Mulher%20de%2033%20anos%20desaparece%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%2C%20no%20Sul%20do%20ES%20-%20A%20Gazeta%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Mulher de 33 anos desaparece em São José do Calçado, no Sul do ES &nbsp;&nbsp; A Gazeta","pubDate":"Wed, 22 Jul 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1cvoqo0","title":"FIFI, Vereador 2004 em Sao Jose do Calcado - CBN Amazônia","link":"https://www.google.com/search?q=FIFI%2C%20Vereador%202004%20em%20Sao%20Jose%20do%20Calcado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"FIFI, Vereador 2004 em Sao Jose do Calcado &nbsp;&nbsp; CBN Amazônia","pubDate":"Sat, 17 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"lbnda8","title":"São José do Calçado (ES) vai às urnas escolher presidente; siga resultado da apuração - UOL Notícias","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20vai%20%C3%A0s%20urnas%20escolher%20presidente%3B%20siga%20resultado%20da%20apura%C3%A7%C3%A3o%20-%20UOL%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado (ES) vai às urnas escolher presidente; siga resultado da apuração &nbsp;&nbsp; UOL Notícias","pubDate":"Sun, 04 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"s29i0w","title":"Idoso morre após ser baleado na cabeça em São José do Calçado - A Gazeta","link":"https://www.google.com/search?q=Idoso%20morre%20ap%C3%B3s%20ser%20baleado%20na%20cabe%C3%A7a%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20A%20Gazeta%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Idoso morre após ser baleado na cabeça em São José do Calçado &nbsp;&nbsp; A Gazeta","pubDate":"Tue, 06 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"ylrh6o","title":"Prefeitura de São José do Calçado ES abre processo seletivo com 524 vagas - Qconcursos Folha Dirigida","link":"https://www.google.com/search?q=Prefeitura%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20ES%20abre%20processo%20seletivo%20com%20524%20vagas%20-%20Qconcursos%20Folha%20Dirigida%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Prefeitura de São José do Calçado ES abre processo seletivo com 524 vagas &nbsp;&nbsp; Qconcursos Folha Dirigida","pubDate":"Thu, 15 Jan 2026 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"5nkjy8","title":"Idoso morre após ser baleado na cabeça em São José do Calçado - Folha Vitória","link":"https://www.google.com/search?q=Idoso%20morre%20ap%C3%B3s%20ser%20baleado%20na%20cabe%C3%A7a%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Folha%20Vit%C3%B3ria%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Idoso morre após ser baleado na cabeça em São José do Calçado &nbsp;&nbsp; Folha Vitória","pubDate":"Tue, 06 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"d2dz7k","title":"JOSÉ MANOEL, Vereador 2016 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=JOS%C3%89%20MANOEL%2C%20Vereador%202016%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"JOSÉ MANOEL, Vereador 2016 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Tue, 29 Sep 2026 23:06:56 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"jhn9fk","title":"Prefeito de São José do Calçado reage a críticas de Magno Malta: “não conhece a palavra gratidão” - Aqui Notícias","link":"https://www.google.com/search?q=Prefeito%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20reage%20a%20cr%C3%ADticas%20de%20Magno%20Malta%3A%20%E2%80%9Cn%C3%A3o%20conhece%20a%20palavra%20gratid%C3%A3o%E2%80%9D%20-%20Aqui%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Prefeito de São José do Calçado reage a críticas de Magno Malta: “não conhece a palavra gratidão” &nbsp;&nbsp; Aqui Notícias","pubDate":"Thu, 15 Oct 2026 14:37:44 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"113tf1c","title":"WAGUINHO FRANÇA, Vereador 2012 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=WAGUINHO%20FRAN%C3%87A%2C%20Vereador%202012%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"WAGUINHO FRANÇA, Vereador 2012 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Fri, 16 Oct 2026 04:27:21 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.358Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1a4nrsg","title":"Resultado das eleições 2026 em São José do Calçado (ES): como foi a votação nos locais de votação da 44ª Zona Eleitoral - G1","link":"https://www.google.com/search?q=Resultado%20das%20elei%C3%A7%C3%B5es%202026%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20como%20foi%20a%20vota%C3%A7%C3%A3o%20nos%20locais%20de%20vota%C3%A7%C3%A3o%20da%2044%C2%AA%20Zona%20Eleitoral%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Resultado das eleições 2026 em São José do Calçado (ES): como foi a votação nos locais de votação da 44ª Zona Eleitoral &nbsp;&nbsp; G1","pubDate":"Mon, 05 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"159hijc","title":"PAULINHO DO ZUZA, Vereador 2016 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=PAULINHO%20DO%20ZUZA%2C%20Vereador%202016%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"PAULINHO DO ZUZA, Vereador 2016 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Tue, 20 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1d67klc","title":"São José do Calçado (ES) vai às urnas escolher senadores; siga resultado da apuração - UOL Notícias","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20vai%20%C3%A0s%20urnas%20escolher%20senadores%3B%20siga%20resultado%20da%20apura%C3%A7%C3%A3o%20-%20UOL%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado (ES) vai às urnas escolher senadores; siga resultado da apuração &nbsp;&nbsp; UOL Notícias","pubDate":"Sun, 04 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1tf3vls","title":"São José do Calçado (ES): veja resultado da apuração da votação para presidente na cidade - UOL Notícias","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20veja%20resultado%20da%20apura%C3%A7%C3%A3o%20da%20vota%C3%A7%C3%A3o%20para%20presidente%20na%20cidade%20-%20UOL%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado (ES): veja resultado da apuração da votação para presidente na cidade &nbsp;&nbsp; UOL Notícias","pubDate":"Sun, 04 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"10kueps","title":"Eleições 2026 em São José do Calçado: resultado e 2º turno em 25 de outubro - CBN Amazônia","link":"https://www.google.com/search?q=Elei%C3%A7%C3%B5es%202026%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%3A%20resultado%20e%202%C2%BA%20turno%20em%2025%20de%20outubro%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Eleições 2026 em São José do Calçado: resultado e 2º turno em 25 de outubro &nbsp;&nbsp; CBN Amazônia","pubDate":"Mon, 28 Sep 2026 19:47:02 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"r86v9c","title":"EPG Patrimônio do Divino, 44ª zona eleitoral: resultado da votação em São José do Calçado (ES) no 1º turno - G1","link":"https://www.google.com/search?q=EPG%20Patrim%C3%B4nio%20do%20Divino%2C%2044%C2%AA%20zona%20eleitoral%3A%20resultado%20da%20vota%C3%A7%C3%A3o%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20no%201%C2%BA%20turno%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"EPG Patrimônio do Divino, 44ª zona eleitoral: resultado da votação em São José do Calçado (ES) no 1º turno &nbsp;&nbsp; G1","pubDate":"Mon, 05 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1akxjp0","title":"São José do Calçado (ES) vai às urnas escolher governador; siga resultado da apuração - UOL Notícias","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20vai%20%C3%A0s%20urnas%20escolher%20governador%3B%20siga%20resultado%20da%20apura%C3%A7%C3%A3o%20-%20UOL%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado (ES) vai às urnas escolher governador; siga resultado da apuração &nbsp;&nbsp; UOL Notícias","pubDate":"Sun, 04 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1wjbf7k","title":"PAULINHO DO ZUZA, Vereador 2012 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=PAULINHO%20DO%20ZUZA%2C%20Vereador%202012%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"PAULINHO DO ZUZA, Vereador 2012 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Fri, 16 Oct 2026 07:17:49 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1cs9ku8","title":"Peça teatral “Quê vê, escuta!?” promove histórias de autores de São José do Calçado - Jornal Espírito Santo Notícias","link":"https://www.google.com/search?q=Pe%C3%A7a%20teatral%20%E2%80%9CQu%C3%AA%20v%C3%AA%2C%20escuta!%3F%E2%80%9D%20promove%20hist%C3%B3rias%20de%20autores%20de%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20Jornal%20Esp%C3%ADrito%20Santo%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Peça teatral “Quê vê, escuta!?” promove histórias de autores de São José do Calçado &nbsp;&nbsp; Jornal Espírito Santo Notícias","pubDate":"Thu, 20 Aug 2026 10:29:03 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1ifaxhc","title":"CEMAZINHO, Vereador 2024 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=CEMAZINHO%2C%20Vereador%202024%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"CEMAZINHO, Vereador 2024 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Sun, 18 Oct 2026 03:33:04 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1r6ki80","title":"EPG de Airituba, 44ª zona eleitoral: resultado da votação em São José do Calçado (ES) no 1º turno - G1","link":"https://www.google.com/search?q=EPG%20de%20Airituba%2C%2044%C2%AA%20zona%20eleitoral%3A%20resultado%20da%20vota%C3%A7%C3%A3o%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20no%201%C2%BA%20turno%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"EPG de Airituba, 44ª zona eleitoral: resultado da votação em São José do Calçado (ES) no 1º turno &nbsp;&nbsp; G1","pubDate":"Mon, 05 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.357Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1jlx6dc","title":"Temporal destelha imóveis e derruba mais de 20 árvores em São José do Calçado - A Gazeta","link":"https://www.google.com/search?q=Temporal%20destelha%20im%C3%B3veis%20e%20derruba%20mais%20de%2020%20%C3%A1rvores%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20A%20Gazeta%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Temporal destelha imóveis e derruba mais de 20 árvores em São José do Calçado &nbsp;&nbsp; A Gazeta","pubDate":"Fri, 02 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.356Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"rjabpc","title":"Concurso São José do Calçado: resultados divulgados - Estratégia Concursos","link":"https://www.google.com/search?q=Concurso%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%3A%20resultados%20divulgados%20-%20Estrat%C3%A9gia%20Concursos%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Concurso São José do Calçado: resultados divulgados &nbsp;&nbsp; Estratégia Concursos","pubDate":"Tue, 10 Feb 2026 08:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.356Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1vntdog","title":"Resultado da apuração ao vivo em São José do Calçado (ES) na Eleição 2026 - Rádio Itatiaia","link":"https://www.google.com/search?q=Resultado%20da%20apura%C3%A7%C3%A3o%20ao%20vivo%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20na%20Elei%C3%A7%C3%A3o%202026%20-%20R%C3%A1dio%20Itatiaia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Resultado da apuração ao vivo em São José do Calçado (ES) na Eleição 2026 &nbsp;&nbsp; Rádio Itatiaia","pubDate":"Tue, 20 Oct 2026 22:18:38 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.356Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1h6n8g0","title":"BODOQUE, Vereador 2012 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=BODOQUE%2C%20Vereador%202012%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"BODOQUE, Vereador 2012 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Tue, 20 Oct 2026 03:08:25 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.356Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1c23nmo","title":"Resultado das eleições 2026 em São José do Calçado (ES): como foi a votação no seu local de votação; consulte por zona eleitoral - G1","link":"https://www.google.com/search?q=Resultado%20das%20elei%C3%A7%C3%B5es%202026%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20como%20foi%20a%20vota%C3%A7%C3%A3o%20no%20seu%20local%20de%20vota%C3%A7%C3%A3o%3B%20consulte%20por%20zona%20eleitoral%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Resultado das eleições 2026 em São José do Calçado (ES): como foi a votação no seu local de votação; consulte por zona eleitoral &nbsp;&nbsp; G1","pubDate":"Mon, 05 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.356Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1s12bhw","title":"São José do Calçado (ES): veja resultado da apuração da votação para senador na cidade - UOL Notícias","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20veja%20resultado%20da%20apura%C3%A7%C3%A3o%20da%20vota%C3%A7%C3%A3o%20para%20senador%20na%20cidade%20-%20UOL%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado (ES): veja resultado da apuração da votação para senador na cidade &nbsp;&nbsp; UOL Notícias","pubDate":"Sun, 04 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.356Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"13x894w","title":"Eleições 2026 em São José do Calçado: acompanhe a apuração do 2º turno para governador do Espírito Santo ao vivo - Rádio Itatiaia","link":"https://www.google.com/search?q=Elei%C3%A7%C3%B5es%202026%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%3A%20acompanhe%20a%20apura%C3%A7%C3%A3o%20do%202%C2%BA%20turno%20para%20governador%20do%20Esp%C3%ADrito%20Santo%20ao%20vivo%20-%20R%C3%A1dio%20Itatiaia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Eleições 2026 em São José do Calçado: acompanhe a apuração do 2º turno para governador do Espírito Santo ao vivo &nbsp;&nbsp; Rádio Itatiaia","pubDate":"Thu, 22 Oct 2026 05:24:26 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.356Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"kb8zuo","title":"Resultado da apuração ao vivo da Eleição 2026 em São José do Calçado (ES) no 2º turno | Veja quem foi o mais votado - Rádio Itatiaia","link":"https://www.google.com/search?q=Resultado%20da%20apura%C3%A7%C3%A3o%20ao%20vivo%20da%20Elei%C3%A7%C3%A3o%202026%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%20no%202%C2%BA%20turno%20%7C%20Veja%20quem%20foi%20o%20mais%20votado%20-%20R%C3%A1dio%20Itatiaia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Resultado da apuração ao vivo da Eleição 2026 em São José do Calçado (ES) no 2º turno | Veja quem foi o mais votado &nbsp;&nbsp; Rádio Itatiaia","pubDate":"Fri, 02 Oct 2026 12:00:28 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.355Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"lgyyf4","title":"NATAL, Vereador 2012 em São José do Calçado - CBN Amazônia","link":"https://www.google.com/search?q=NATAL%2C%20Vereador%202012%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20-%20CBN%20Amaz%C3%B4nia%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"NATAL, Vereador 2012 em São José do Calçado &nbsp;&nbsp; CBN Amazônia","pubDate":"Wed, 21 Oct 2026 03:12:01 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.355Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"1024074","title":"São José do Calçado (ES): veja resultado da apuração da votação para governador na cidade - UOL Notícias","link":"https://www.google.com/search?q=S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20veja%20resultado%20da%20apura%C3%A7%C3%A3o%20da%20vota%C3%A7%C3%A3o%20para%20governador%20na%20cidade%20-%20UOL%20Not%C3%ADcias%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"São José do Calçado (ES): veja resultado da apuração da votação para governador na cidade &nbsp;&nbsp; UOL Notícias","pubDate":"Sun, 04 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.355Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"},{"id":"w1p20w","title":"Resultado das eleições 2026 em São José do Calçado (ES): como foi a votação no 1º turno - G1","link":"https://www.google.com/search?q=Resultado%20das%20elei%C3%A7%C3%B5es%202026%20em%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%20(ES)%3A%20como%20foi%20a%20vota%C3%A7%C3%A3o%20no%201%C2%BA%20turno%20-%20G1%20S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado","description":"Resultado das eleições 2026 em São José do Calçado (ES): como foi a votação no 1º turno &nbsp;&nbsp; G1","pubDate":"Mon, 05 Oct 2026 07:00:00 GMT","source":"https://news.google.com/rss/search?q=%22S%C3%A3o%20Jos%C3%A9%20do%20Cal%C3%A7ado%22&hl=pt-BR&gl=BR&ceid=BR:pt-419","foundAt":"2026-10-23T19:44:47.353Z","image":"https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80"}];
+const grid = document.getElementById('grid');
+const empty = document.getElementById('empty');
+const countEl = document.getElementById('count');
+const refresh = document.getElementById('refresh');
+const dateTime = document.getElementById('date-time');
+const yearEl = document.getElementById('year');
+const yearFilter = document.getElementById('year-filter');
+const visitsEl = document.getElementById('visits');
+const opinionForm = document.getElementById('opinion-form');
+const opinionStatus = document.getElementById('opinion-status');
+const navLinks = document.querySelectorAll('.nav-bar a');
+const sectionTitle = document.querySelector('.section-head h1');
+const commentTrack = document.getElementById('comment-track');
+
+let ALL = [];
+let CURRENT_YEAR = new Date().getFullYear().toString();
+let CURRENT_CAT = 'home';
+
+function updateClock() {
+  const now = new Date();
+  const opts = { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' };
+  dateTime.textContent = now.toLocaleDateString('pt-BR', opts).toUpperCase();
+  if (yearEl) yearEl.textContent = now.getFullYear();
+}
+
+function getNewsImage(n) {
+  if (n.image) return n.image;
+  if (n.thumbnail) return n.thumbnail;
+  if (n.enclosure && n.enclosure.url) return n.enclosure.url;
+  if (n.media && n.media.url) return n.media.url;
+  const desc = n.description || '';
+  const m = desc.match(/<img[^>]+src=['"]([^'"]+)['"][^>]*>/i);
+  if (m && m[1]) return m[1];
+  return null;
+}
+
+function getYear(n) {
+  const pd = n.pubDate || '';
+  const fd = n.foundAt || '';
+  let m = pd.match(/(\d{4})/);
+  if (m) return m[1];
+  m = fd.match(/(\d{4})/);
+  if (m) return m[1];
+  return '';
+}
+
+function norm(s) {
+  if (!s) return '';
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function matchCategory(n, cat) {
+  if (cat === 'home') return true;
+  const t = norm((n.title || '') + ' ' + (n.description || ''));
+  if (cat === 'politica') {
+    return t.includes('elei') || t.includes('prefeit') || t.includes('vereador') || t.includes('camara') || t.includes('deputad') || t.includes('senad') || t.includes('govern') || t.includes('candidato');
+  }
+  if (cat === 'comunidade') {
+    return t.includes('comun') || t.includes('popul') || t.includes('mstv') || t.includes('terra') || t.includes('ibge') || t.includes('igreja') || t.includes('escola') || t.includes('bairro') || t.includes('evento');
+  }
+  if (cat === 'seguranca') {
+    return t.includes('segur') || t.includes('polic') || t.includes('pm') || t.includes('drog') || t.includes('pris') || t.includes('roub') || t.includes('furto') || t.includes('homicid') || t.includes('balead') || t.includes('morte') || t.includes('eletrocut');
+  }
+  if (cat === 'esporte') {
+    const hasSports = t.includes('futebol') || t.includes('futeb') || t.includes('volei') || t.includes('corrida') || t.includes('esporte') || t.includes('campeonato') || t.includes('copa') || t.includes('partida') || t.includes('torneio') || t.includes('atlet') || t.includes('basquete') || t.includes('jogos');
+    const hasForbidden = t.includes('carro') || t.includes('acidente') || t.includes('colisao') || t.includes('atropel') || t.includes('balead') || t.includes('vereador') || t.includes('prefeito') || t.includes('eleic') || t.includes('morte') || t.includes('morre') || t.includes('ferid') || t.includes('vitima') || t.includes('transito');
+    return hasSports && !hasForbidden;
+  }
+  if (cat === 'opiniao') {
+    return t.includes('opiniao') || t.includes('artigo') || t.includes('coluna') || t.includes('editorial');
+  }
+  return true;
+}
+
+function buildYearFilter() {
+  if (!yearFilter) return;
+  const years = {};
+  for (let i = 0; i < ALL.length; i++) {
+    if (!matchCategory(ALL[i], CURRENT_CAT)) continue;
+    const y = getYear(ALL[i]);
+    if (y) years[y] = true;
+  }
+  const list = Object.keys(years).sort((a,b) => b.localeCompare(a));
+  yearFilter.innerHTML = '';
+  for (let i = 0; i < list.length; i++) {
+    const opt = document.createElement('option');
+    opt.value = list[i];
+    opt.textContent = list[i];
+    yearFilter.appendChild(opt);
+  }
+  if (list.includes(CURRENT_YEAR)) {
+    yearFilter.value = CURRENT_YEAR;
+  } else if (list.length > 0) {
+    yearFilter.value = list[0];
+    CURRENT_YEAR = list[0];
+  } else {
+    yearFilter.innerHTML = '<option value="' + new Date().getFullYear() + '">' + new Date().getFullYear() + '</option>';
+    yearFilter.value = new Date().getFullYear();
+  }
+}
+
+function renderFiltered() {
+  const y = yearFilter ? yearFilter.value : CURRENT_YEAR;
+  const filtered = [];
+  for (let i = 0; i < ALL.length; i++) {
+    if (getYear(ALL[i]) !== y) continue;
+    if (!matchCategory(ALL[i], CURRENT_CAT)) continue;
+    filtered.push(ALL[i]);
+  }
+  render(filtered);
+}
+
+function setCategory(cat, label) {
+  CURRENT_CAT = cat;
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.dataset.cat === cat);
+  });
+  if (sectionTitle) {
+    sectionTitle.textContent = 'Últimas notícias';
+  }
+  buildYearFilter();
+  renderFiltered();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openModal(n) {
+  window.open(n.link, '_blank');
+}
+
+function closeModal() {
+  const modal = document.getElementById('news-modal');
+  const frame = document.getElementById('news-frame');
+  if (!modal) return;
+  modal.classList.remove('open');
+  if (frame) frame.src = 'about:blank';
+  document.body.style.overflow = '';
+}
+
+function render(noticias) {
+  grid.innerHTML = '';
+  if (!noticias || noticias.length === 0) {
+    empty.style.display = 'flex';
+    if (countEl) countEl.textContent = '0 matérias';
+    empty.querySelector('h2').textContent = 'Nenhuma notícia nesta categoria / ano';
+    empty.querySelector('p').textContent = 'Escolha outra categoria ou outro ano no filtro.';
+    return;
+  }
+  empty.style.display = 'none';
+  if (countEl) countEl.textContent = noticias.length + (noticias.length === 1 ? ' matéria' : ' matérias');
+  for (let i = 0; i < noticias.length; i++) {
+    const n = noticias[i];
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'card card-horizontal card-button';
+    let deck = (n.description || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    if (deck.length > 200) deck = deck.substring(0, 197) + '...';
+    const img = getNewsImage(n);
+    if (img) {
+      btn.innerHTML = `
+        <div class="card-media">
+          <img src="${escapeHtml(img)}" alt="${escapeHtml(n.title)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentElement.style.display='none'">
+        </div>
+        <div class="card-content">
+          <div class="card-kicker">São José do Calçado • ${n.pubDate ? n.pubDate.replace(/GMT.*$/, '').trim() : ''}</div>
+          <h2 class="card-title">${escapeHtml(n.title)}</h2>
+          <p class="card-deck">${escapeHtml(deck)}</p>
+          <div class="card-cta">LER MATÉRIA →</div>
+        </div>
+      `;
+    } else {
+      btn.innerHTML = `
+        <div class="card-content card-content-full">
+          <div class="card-kicker">São José do Calçado • ${n.pubDate ? n.pubDate.replace(/GMT.*$/, '').trim() : ''}</div>
+          <h2 class="card-title">${escapeHtml(n.title)}</h2>
+          <p class="card-deck">${escapeHtml(deck)}</p>
+          <div class="card-cta">LER MATÉRIA →</div>
+        </div>
+      `;
+    }
+    btn.addEventListener('click', () => openModal(n));
+    grid.appendChild(btn);
+  }
+}
+
+function escapeHtml(s) {
+  if (!s) return '';
+  return s.replace(/[&<>"']/g, function(c) {
+    return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c];
+  });
+}
+
+async function load() {
+  try {
+    const data = { noticias: window.__EMBEDDED_NOTICIAS__ || [] };
+    ALL = data.noticias;
+    buildYearFilter();
+    renderFiltered();
+  } catch (e) {
+    empty.style.display = 'flex';
+    empty.querySelector('h2').textContent = 'Erro ao carregar';
+    empty.querySelector('p').textContent = 'Verifique se o servidor está rodando.';
+  }
+}
+
+async function loadVisits() {
+  if (!visitsEl) return;
+  try {
+    const res = await fetch('/api/visitas');
+    const data = await res.json();
+    if (data && data.ok) {
+      visitsEl.textContent = Number(data.total).toLocaleString('pt-BR');
+    }
+  } catch {
+    try {
+      const res = await fetch('/api/visitas', { method: 'POST' });
+      const data = await res.json();
+      if (data && data.ok) {
+        visitsEl.textContent = Number(data.total).toLocaleString('pt-BR');
+      }
+    } catch {
+      visitsEl.textContent = '--';
+    }
+  }
+}
+
+async function countVisit() {
+  try {
+    const res = await fetch('/api/visitas', { method: 'POST' });
+    const data = await res.json();
+    if (data && data.ok && visitsEl) {
+      visitsEl.textContent = Number(data.total).toLocaleString('pt-BR');
+    }
+  } catch {}
+}
+
+function showOpinionStatus(text, type) {
+  if (!opinionStatus) return;
+  opinionStatus.textContent = text;
+  opinionStatus.className = 'opinion-status' + (type ? ' ' + type : '');
+}
+
+function renderComments(comments) {
+  if (!commentTrack) return;
+  commentTrack.innerHTML = '';
+  if (!comments || comments.length === 0) {
+    const span = document.createElement('span');
+    span.className = 'comment-item';
+    span.textContent = 'Seja o primeiro a deixar seu comentário!';
+    commentTrack.appendChild(span);
+    commentTrack.appendChild(span.cloneNode(true));
+    return;
+  }
+  const items = comments.slice(0, 40);
+  for (let i = 0; i < items.length; i++) {
+    const c = items[i];
+    const name = c.name || 'Anônimo';
+    const msg = (c.message || '').replace(/\n/g, ' ').trim();
+    if (!msg) continue;
+    const span = document.createElement('span');
+    span.className = 'comment-item';
+    span.innerHTML = '<strong>' + escapeHtml(name) + ':</strong> ' + escapeHtml(msg);
+    commentTrack.appendChild(span);
+  }
+  // duplicate for seamless loop
+  for (let i = 0; i < commentTrack.children.length; i++) {
+    commentTrack.appendChild(commentTrack.children[i].cloneNode(true));
+  }
+}
+
+async function loadComments() {
+  try {
+    const res = await fetch('/api/comentarios');
+    const data = await res.json();
+    if (data && (data.comentarios || data.opinioes)) {
+      renderComments(data.comentarios || data.opinioes || []);
+    }
+  } catch {
+    renderComments([]);
+  }
+}
+
+if (opinionForm) {
+  opinionForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const name = document.getElementById('opinion-name').value.trim();
+    const contact = document.getElementById('opinion-contact').value.trim();
+    const message = document.getElementById('opinion-message').value.trim();
+    if (!message) {
+      showOpinionStatus('Escreva seu comentário antes de enviar.', 'error');
+      return;
+    }
+    const button = opinionForm.querySelector('button[type="submit"]');
+    if (button) button.disabled = true;
+    showOpinionStatus('Enviando...', '');
+    try {
+      const res = await fetch('/api/comentario', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, contact, message })
+      });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        showOpinionStatus('Comentário publicado!', 'success');
+        opinionForm.reset();
+        loadComments();
+      } else {
+        showOpinionStatus(data.error || 'Não foi possível enviar. Tente novamente.', 'error');
+      }
+    } catch {
+      showOpinionStatus('Não foi possível enviar. Verifique sua conexão.', 'error');
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
+}
+
+navLinks.forEach(a => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    const cat = a.dataset.cat || 'home';
+    const label = a.dataset.label || a.textContent.trim();
+    setCategory(cat, label);
+  });
+});
+
+const modalClose1 = document.getElementById('news-modal-close');
+const modalClose2 = document.getElementById('news-modal-x');
+if (modalClose1) modalClose1.addEventListener('click', closeModal);
+if (modalClose2) modalClose2.addEventListener('click', closeModal);
+const newsModal = document.getElementById('news-modal');
+if (newsModal) {
+  newsModal.addEventListener('click', (e) => {
+    if (e.target === newsModal) closeModal();
+  });
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+
+if (refresh) refresh.addEventListener('click', load);
+if (yearFilter) yearFilter.addEventListener('change', renderFiltered);
+updateClock();
+setInterval(updateClock, 60000);
+navLinks.forEach(a => a.classList.toggle('active', a.dataset.cat === 'home'));
+countVisit();
+load();
+loadVisits();
+loadComments();
+setInterval(load, 300000);
+setInterval(loadComments, 30000);
+
+</script>
+</body>
+</html>
