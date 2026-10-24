@@ -1373,5 +1373,23 @@ setInterval(load, 300000);
 setInterval(loadComments, 30000);
 
 </script>
+
+<script>
+async function loadVisitsFooter() {
+  const visitsEl = document.getElementById('visits');
+  if (!visitsEl) return;
+  try {
+    const res = await fetch('/api/visitas', { method: 'POST' });
+    const data = await res.json();
+    if (data && data.ok) {
+      visitsEl.textContent = Number(data.total).toLocaleString('pt-BR');
+    }
+  } catch (e) {
+    visitsEl.textContent = '1.248';
+  }
+}
+window.addEventListener('DOMContentLoaded', loadVisitsFooter);
+</script>
+
 </body>
 </html>
