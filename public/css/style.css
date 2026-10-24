@@ -658,29 +658,33 @@ body {
   }
 }
 
+
 @media (max-width: 1023px) {
-  .masthead {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-  }
-  .container {
-    margin-top: 120px;
+  body {
+    display: flex;
+    flex-direction: column;
   }
   .sidebar-ad {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 15px 0 !important;
+    order: -1; /* Aparece logo no topo abaixo do menu no celular */
     background: #111111;
     border: 2px solid #ff007f;
     padding: 20px;
-    margin: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    box-sizing: border-box;
     box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
-    animation: neonPulse 1.5s infinite alternate;
+    z-index: 10;
+  }
+  .container {
+    margin-top: 10px !important;
   }
 }
+
 
 /* Ajuste de escala para padrão 100% */
 body { font-size: 14px !important; }
