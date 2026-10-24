@@ -520,7 +520,7 @@ body {
   white-space: nowrap;
 }
 
-.visits-top {
+.visits-footer {
   letter-spacing: 4px;
 }
 
@@ -822,16 +822,16 @@ body { font-size: 14px !important; }
 
   <header class="masthead">
     <div class="masthead-top">
-      <div class="brand brand-with-logo">
-        <img class="brand-logo" src="https://pmsjc.es.gov.br/assets-portal/images/igreja-big.jpeg" alt="São José do Calçado">
-        <div class="brand-text">
+      <div class="brand brand-with-logo" style="flex-direction: row-reverse; justify-content: flex-end;">
+        <div class="brand-text" style="text-align: right;">
           <div class="brand-title">NOTÍCIAS DE SÃO JOSÉ DO CALÇADO</div>
           <div class="brand-subtitle">Jornal Digital • Espírito Santo</div>
         </div>
+        <img class="brand-logo" src="https://pmsjc.es.gov.br/assets-portal/images/igreja-big.jpeg" alt="São José do Calçado">
       </div>
       <div class="masthead-meta">
         <div id="date-time">--</div>
-        <div class="visits visits-top">Visitas: <strong id="visits">--</strong></div>
+        
       </div>
     </div>
     <nav class="nav-bar">
@@ -904,10 +904,14 @@ body { font-size: 14px !important; }
 
 <aside class="sidebar-ad">
   <div style="font-family:'Merriweather',serif; font-size:14px; font-weight:900; color:#ff007f; text-transform:uppercase; letter-spacing:4px; text-align:center; border-bottom:1px solid #333; padding-bottom:12px;">Patrocínio / Anúncio</div>
-  <div style="background:#1a1a1a; border:1px solid #333; padding:16px; text-align:center; color:#fff; font-size:12px; line-height:1.5;">
-    <p style="margin-bottom:10px; color:#ff007f; font-weight:bold; text-transform:uppercase; letter-spacing:2px;">Espaço Publicitário</p>
-    <p style="color:#ccc; font-size:11px;">Anuncie aqui no Jornal Digital de São José do Calçado e região!</p>
-  </div>
+  
+<div style="display:flex; flex-direction:column; gap:12px; margin-bottom:16px;">
+  <a href="#" target="_blank"><img src="/images/grupo da lilian .png" alt="Grupo da Lilian" style="width:100%; border-radius:4px; border:1px solid #333;"></a>
+  <a href="#" target="_blank"><img src="/images/instagran da lilian.png" alt="Instagram da Lilian" style="width:100%; border-radius:4px; border:1px solid #333;"></a>
+  <a href="#" target="_blank"><img src="/images/lilian artesanato .png" alt="Lilian Artesanato" style="width:100%; border-radius:4px; border:1px solid #333;"></a>
+  <a href="#" target="_blank"><img src="/images/luciana bareli.png" alt="Luciana Bareli" style="width:100%; border-radius:4px; border:1px solid #333;"></a>
+</div>
+
   <div style="margin-top:auto; text-align:center;">
     <a href="https://wa.me/" target="_blank" style="display:block; background:#ff007f; color:#fff; padding:10px; font-size:10px; font-weight:bold; text-transform:uppercase; letter-spacing:2px; text-decoration:none; border-radius:4px; box-shadow:0 0 10px rgba(255,0,127,0.5);">Anuncie Conosco</a>
   </div>
@@ -1185,31 +1189,19 @@ function render(noticias) {
     btn.className = 'card card-horizontal card-button';
     let deck = (n.description || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
     if (deck.length > 200) deck = deck.substring(0, 197) + '...';
-    const img = getNewsImage(n);
-    if (img) {
-      btn.innerHTML = `
-        <div class="card-media">
-          <img src="${escapeHtml(img)}" alt="${escapeHtml(n.title)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentElement.style.display='none'">
-        </div>
-        <div class="card-content">
-          <div class="card-kicker">São José do Calçado • ${n.pubDate ? n.pubDate.replace(/GMT.*$/, '').trim() : ''}</div>
-          <h2 class="card-title">${escapeHtml(n.title)}</h2>
-          <p class="card-deck">${escapeHtml(deck)}</p>
-          <div class="card-cta">LER MATÉRIA →</div>
-        </div>
-      `;
-    } else {
-      btn.innerHTML = `
-        <div class="card-content card-content-full">
-          <div class="card-kicker">São José do Calçado • ${n.pubDate ? n.pubDate.replace(/GMT.*$/, '').trim() : ''}</div>
-          <h2 class="card-title">${escapeHtml(n.title)}</h2>
-          <p class="card-deck">${escapeHtml(deck)}</p>
-          <div class="card-cta">LER MATÉRIA →</div>
-        </div>
-      `;
-    }
-    btn.addEventListener('click', () => openModal(n));
-    grid.appendChild(btn);
+    let img = getNewsImage(n);
+    if (!img) img = 'https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80';
+    btn.innerHTML = `
+      <div class="card-media">
+        <img src="${escapeHtml(img)}" alt="${escapeHtml(n.title)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?auto=format&fit=crop&w=600&q=80'">
+      </div>
+      <div class="card-content">
+        <div class="card-kicker">São José do Calçado • ${n.pubDate ? n.pubDate.replace(/GMT.*$/, '').trim() : ''}</div>
+        <h2 class="card-title">${escapeHtml(n.title)}</h2>
+        <p class="card-deck">${escapeHtml(deck)}</p>
+        <div class="card-cta">LER MATÉRIA →</div>
+      </div>
+    `;grid.appendChild(btn);
   }
 }
 

@@ -1,0 +1,20 @@
+{
+  "name": "noticias-sao-jose-do-calcado",
+  "version": "1.0.0",
+  "description": "Bloco de Notícias de São José do Calçado - estilo jornal, atualização às 08h/12h/17h, com resumo para WhatsApp",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "update": "node src/updater.js",
+    "dev": "node src/server.js",
+    "scheduler": "node src/scheduler.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@libsql/client": "^0.18.0"
+  }
+}
