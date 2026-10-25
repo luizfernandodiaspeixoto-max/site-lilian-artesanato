@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://lilianartesanato.com.br/</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://images.pexels.com/photos/35155839/pexels-photo-35155839.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200</image:loc>
+      <image:title>Lílian Artesanato - Bolsas de Crochê Artesanais</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lilianartesanato.com.br/products</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>

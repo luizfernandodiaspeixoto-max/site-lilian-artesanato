@@ -1,2 +1,24 @@
+<<<<<<< HEAD
 # Local Netlify folder
 .netlify
+=======
+node_modules/
+.next/
+.vscode/
+.openclaude/
+.openopencode/
+*.log
+dev.log
+dev-err.log
+tsconfig.tsbuildinfo
+deploy.ps1
+Documentacao-Lilian-Artesanato.docx
+generate-doc.js
+historico-sessao-anterior.json
+Ultimo acesso.txt
+subir no site.txt
+.netlify/
+.env*
+.DS_Store
+Thumbs.db
+>>>>>>> 58cb862a6c6e4471dd6958e4e1f6887cae471655

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "noticias-sao-jose-do-calcado",
   "version": "1.0.0",
   "description": "Bloco de Notícias de São José do Calçado - estilo jornal, atualização às 08h/12h/17h, com resumo para WhatsApp",
@@ -16,5 +17,33 @@
   "license": "MIT",
   "dependencies": {
     "@libsql/client": "^0.18.0"
+=======
+  "name": "site-lilian-artesanato",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.0.3",
+    "docx": "^9.7.1",
+    "lucide-react": "^0.300.0",
+    "next": "^14.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.15.13",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0"
+>>>>>>> 58cb862a6c6e4471dd6958e4e1f6887cae471655
   }
 }
