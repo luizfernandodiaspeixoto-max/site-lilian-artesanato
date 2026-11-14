@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# Local Netlify folder
+.netlify
+=======
 node_modules/
 .next/
 .vscode/
@@ -17,3 +21,4 @@ subir no site.txt
 .env*
 .DS_Store
 Thumbs.db
+>>>>>>> 58cb862a6c6e4471dd6958e4e1f6887cae471655
