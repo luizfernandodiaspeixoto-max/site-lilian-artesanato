@@ -603,6 +603,58 @@ export const products: Product[] = [
     image: 'cordao-vermelho.png',
     color: 'Colorido',
   },
+  {
+    id: 45,
+    slug: 'bolsa-2026',
+    name: 'Bolsa 2026',
+    subtitle: 'Nova Coleção',
+    description:
+      '✨ A nova estrela da coleção 2026! Bolsa de crochê artesanal com design moderno e acabamento impecável — a peça que vai transformar seus looks com muito estilo e personalidade. Feita à mão com fios de alta qualidade, espaçosa e versátil para o dia a dia.',
+    category: 'Bolsa',
+    badge: 'Nova',
+    ratingCount: 0,
+    image: 'bolsa-2026.jpeg',
+    color: 'Natural',
+  },
+  {
+    id: 46,
+    slug: 'bolsa-2026-cinza',
+    name: 'Bolsa 2026 Cinza',
+    subtitle: 'Cinza Elegante',
+    description:
+      '🤍 Sofisticação atemporal na coleção 2026! Bolsa de crochê na cor cinza elegante com detalhes artesanais únicos — perfeita para quem busca versatilidade sem abrir mão do estilo. Espaçosa, resistente e feita à mão com carinho.',
+    category: 'Bolsa',
+    badge: 'Nova',
+    ratingCount: 0,
+    image: 'bolsa-2026-cinza.jpeg',
+    color: 'Neutro',
+  },
+  {
+    id: 47,
+    slug: 'bolsa-2026-verde',
+    name: 'Bolsa 2026 Verde',
+    subtitle: 'Verde Vibrante',
+    description:
+      '🌿 Frescor e personalidade na coleção 2026! Bolsa de crochê verde vibrante que traz vida a qualquer look — artesanal, espaçosa e cheia de charme. A cor da estação feita à mão para você arrasar no dia a dia.',
+    category: 'Bolsa',
+    badge: 'Nova',
+    ratingCount: 0,
+    image: 'bolsa-2026-verde.jpeg',
+    color: 'Colorido',
+  },
+  {
+    id: 48,
+    slug: 'vestido-2026-1',
+    name: 'Vestido 2026',
+    subtitle: 'Nova Coleção',
+    description:
+      '👗 A peça-desejo da coleção 2026! Vestido de crochê artesanal com caimento perfeito e detalhes únicos — elegante, feminino e atemporal. Cada ponto feito à mão com fios premium, criando uma textura que valoriza a silhueta. Ideal para ocasiões especiais ou para se sentir especial todos os dias.',
+    category: 'Roupa',
+    badge: 'Nova',
+    ratingCount: 0,
+    image: 'vestido-2026-1.jpeg',
+    color: 'Natural',
+  },
 ];
 
 export const categories: ProductCategory[] = [
